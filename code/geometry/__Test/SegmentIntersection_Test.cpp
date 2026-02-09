@@ -1,18 +1,6 @@
 #include "../template.h"
 
 // https://codeforces.com/problemset/problem/793/C
-#include <bits/stdc++.h>
-
-#define el '\n'
-#define d(x) cout << #x << ": " << x << el;
-#define forn(i,n) for(int i=0; i < n; ++i)
-#define for1(i,n) for(int i=1; i <= n; ++i)
-#define sz(v) int(v.size())
-#define pb push_back
-
-using namespace std;
-
-typedef double ld;
 const int N = 1e5+10, mod = 1e9+7;
 struct pt{
 	ld x, y;

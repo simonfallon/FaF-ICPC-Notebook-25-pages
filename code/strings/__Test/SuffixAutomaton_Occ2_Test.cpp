@@ -1,25 +1,6 @@
 #include "../template.h"
 
 // https://codeforces.com/contest/452/problem/E
-#include <bits/stdc++.h>
-
-#define forn(i,n) for(int i=0; i<n; ++i)
-#define for1(i,n) for(int i=1; i<=n; ++i)
-#define fored(i,l,r) for(int i=r; i>=l; --i)
-#define el '\n'
-#define fi first
-#define se second
-#define pb push_back
-#define sz(v) int(v.size())
-#define all(v) v.begin(),v.end()
-#define d(x) cout << #x << " : " << x << el;
-
-using namespace std;
-
-typedef long long ll;
-typedef vector<int> vi;
-typedef pair<int,int> ii;
-
 const int mod = 1e9+7;
 
 inline int add(int a, int b){return a+b >= mod ? a+b-mod : a+b;}

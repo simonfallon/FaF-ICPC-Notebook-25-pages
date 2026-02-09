@@ -1,23 +1,6 @@
 #include "../template.h"
 
 // https://codeforces.com/group/hzSLIARNBN/contest/465598/problem/C
-#include <bits/stdc++.h>
-
-#define forn(i,n) for(int i = 0; i < n; ++i)
-#define fore(i,l,r) for(int i = l; i <= r; ++i)
-#define el '\n'
-#define sz(v) v.size()
-#define all(v) v.begin(),v.end()
-#define pb push_back
-#define fi first
-#define se second
-
-using namespace std;
-
-typedef long long ll;
-typedef long double ld;
-typedef pair<int,int> ii;
-
 const ll inf = 1e18;
 const ld eps = 1e-7;
 

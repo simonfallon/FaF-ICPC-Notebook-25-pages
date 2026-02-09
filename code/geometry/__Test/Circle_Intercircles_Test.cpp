@@ -1,25 +1,6 @@
 #include "../template.h"
 
 // https://szkopul.edu.pl/problemset/problem/p73RF9garyZ3keuGDIdyomLv/site/?key=statement
-#include <bits/stdc++.h>
-
-#define fi first
-#define se second
-#define forn(i,n) for(int i=0; i< (int)n; ++i)
-#define for1(i,n) for(int i=1; i<= (int)n; ++i)
-#define fore(i,l,r) for(int i=(int)l; i<= (int)r; ++i)
-#define fored(i,l,r) for(int i=(int)r; i>= (int)l; --i)
-#define pb push_back
-#define el '\n'
-#define d(x) cout<< #x<< " " << x<<el
-#define sz(v) ((int)v.size())
-#define all(v) v.begin(),v.end()
-
-using namespace std;
-
-typedef long long ll;
-typedef double ld;
-
 const ld inf = 1e18, pi = acos(-1), eps = 1e-8;
 
 struct pt {  // for 3D add z coordinate

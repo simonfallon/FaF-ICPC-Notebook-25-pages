@@ -1,18 +1,6 @@
 #include "../template.h"
 
 // http://codeforces.com/problemset/problem/280/A
-#include <bits/stdc++.h>
-using namespace std;
-
-#define pb push_back
-#define mp make_pair
-#define fst first
-#define snd second
-#define forn(i,n) for(int i=0; i<n; ++i)
-#define sz(v) int(v.size())
-
-typedef double ld;
-typedef long long ll;
 const double DINF = 1e20, eps = 1e-7, pi = acos(-1);
 
 struct pt{

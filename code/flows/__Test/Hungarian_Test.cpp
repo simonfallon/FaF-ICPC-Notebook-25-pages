@@ -2,19 +2,6 @@
 
 // https://codeforces.com/group/Ohoz9kAFjS/contest/266572/problem/H
 
-#include <bits/stdc++.h>
-using namespace std;
-
-#define el '\n'
-#define forn(i,n) for(int i=0; i<n; ++i)
-#define for1(i,n) for(int i=1; i<=n; ++i)
-#define pb push_back
-#define all(v) v.begin(),v.end()
-
-typedef long long ld; 
-typedef vector<int> vi; 
-typedef vector<ld> vd;
-
 const ld inf = 1e18; // To Maximize set "inf" to 0, and negate costs
 inline bool zero(ld x){ return x == 0; } // For Integer/LL --> change to x == 0
 struct Hungarian{

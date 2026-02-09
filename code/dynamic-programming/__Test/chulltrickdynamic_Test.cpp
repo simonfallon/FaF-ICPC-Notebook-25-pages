@@ -1,28 +1,6 @@
 #include "../template.h"
 
 // https://codeforces.com/gym/104252/problem/B
-#include <bits/stdc++.h>
-using namespace std;
-
-#define el '\n'
-#define fi first
-#define se second
-#define pb push_back
-#define sz(v) int(v.size())
-#define all(v) v.begin(),v.end()
-#define d(x) cout<< #x<< " " << x<<el
-#define forn(i,n) for(int i = 0; i < n; ++i)
-#define for1(i,n) for(int i = 1; i <= n; ++i)
-#define fore(i,l,r) for(int i = l; i <= r; ++i)
-#define fored(i,l,r) for(int i = r; i >= l; --i)
-
-typedef long long ll;
-typedef long double ld;
-typedef pair<int,int> ii;
-typedef vector<int> vi;
-typedef vector<ii> vii;
-
-typedef ll T;
 const T is_query = -(1LL << 62);
 struct line {
 	T m, b;

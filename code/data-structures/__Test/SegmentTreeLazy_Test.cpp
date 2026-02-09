@@ -1,25 +1,5 @@
 #include "../template.h"
 
-#include <bits/stdc++.h>
-
-#define el '\n'
-#define fi first
-#define se second
-#define pb push_back
-#define sz(v) ((int)v.size())
-#define all(v) v.begin(),v.end()
-#define d(x) cout<< #x<< " " << x<<el
-#define forn(i,n) for(int i=0; i< (int)n; ++i)
-#define for1(i,n) for(int i=1; i<= (int)n; ++i)
-#define fore(i,l,r) for(int i=(int)l; i<= (int)r; ++i)
-#define fored(i,l,r) for(int i=(int)r; i>= (int)l; --i)
-
-using namespace std;
-
-typedef pair<int,int> ii;
-typedef vector<int> vi;
-typedef vector<ii> vii;
-
 struct stree{
   int n, neutro = 0;   vii t;  vi lazy;
   stree(vi &a, string& s): n(sz(a)), t(n << 2), lazy(n << 2){ build(1, 0, n-1, a, s);}

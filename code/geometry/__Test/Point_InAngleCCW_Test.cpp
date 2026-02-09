@@ -1,19 +1,6 @@
 #include "../template.h"
 
 // https://codeforces.com/problemset/gymProblem/102028/D
-#include <bits/stdc++.h>
-
-#define fi first
-#define se second
-#define el '\n'
-#define pb push_back
-#define forn(i,n) for(int i = 0; i < n; ++i)
-#define all(v) v.begin(), v.end()
-#define d(x) cout << #x << " " << x << el;
-
-using namespace std;
-
-typedef double ld;
 const ld pi = acos(-1), inf = 1000000000;
 struct pt {  
 	ld x, y;

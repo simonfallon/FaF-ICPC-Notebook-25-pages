@@ -1,22 +1,5 @@
 #include "../template.h"
 
-#include <bits/stdc++.h>
-using namespace std;
-
-#define fi first
-#define se second
-
-#define forn(i, n) for (int i = 0; i < n; ++i)
-#define for1(i, n) for (int i = 1; i <= n; ++i)
-#define fore(i, l, r) for (int i = l; i <= r; ++i)
-#define el '\n'
-#define d(x) cout << #x << " : " << x << el;
-#define all(v) v.begin(), v.end()
-
-typedef vector<int> vi;
-typedef long long ll;
-typedef pair<ll, ll> pll;
-
 pll fib_log(ll n, ll mod){
   if (n == 0) return {0, 1};
   auto [a, b] = fib_log(n >> 1, mod);

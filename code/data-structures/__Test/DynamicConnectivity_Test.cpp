@@ -1,20 +1,6 @@
 #include "../template.h"
 
 // https://codeforces.com/gym/100551/problem/A
-#include <bits/stdc++.h>
-
-#define sz(v) v.size()
-#define pb push_back
-#define el '\n'
-#define forn(i,n) for(int i = 0; i < n; ++i)
-#define fored(i,l,r) for(int i = r; i >= l; --i)
-#define all(v) v.begin(),v.end()
-
-using namespace std;
-
-typedef vector<int> vi;
-typedef pair<int, int> ii;
-
 struct dsu {
 	vi p, r, c;  int comp;
 	dsu(int n): p(n), r(n, 1), comp(n){iota(all(p), 0);}
