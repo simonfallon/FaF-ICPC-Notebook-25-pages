@@ -1,3 +1,5 @@
+#include "../template.h"
+
 struct SuffixArray { // test line 11
 	vi sa, lcp;
 	SuffixArray(string& s, int lim=256){

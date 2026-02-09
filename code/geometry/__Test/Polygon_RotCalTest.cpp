@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // https://matcomgrader.com/problem/9598/colors-ii/
 #include <bits/stdc++.h>
 

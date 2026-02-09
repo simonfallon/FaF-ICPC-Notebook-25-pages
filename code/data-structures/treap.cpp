@@ -1,3 +1,5 @@
+#include "../template.h"
+
 typedef struct item *pitem;
 struct item {
 	int pr,key,cnt;

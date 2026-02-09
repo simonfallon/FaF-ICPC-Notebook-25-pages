@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // O(m*n) donde cada uno es el tamano de cada string
 int editDist(string &s1, string &s2){
   int m = sz(s1), n = sz(s2);

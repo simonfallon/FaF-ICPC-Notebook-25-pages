@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // https://codeforces.com/problemset/problem/793/C
 #include <bits/stdc++.h>
 

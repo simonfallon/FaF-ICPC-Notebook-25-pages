@@ -1,3 +1,5 @@
+#include "../template.h"
+
 int n;
 int edges = 0;
 int out[nax], in[nax];

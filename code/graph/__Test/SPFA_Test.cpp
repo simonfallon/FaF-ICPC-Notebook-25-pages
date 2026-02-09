@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // https://cses.fi/problemset/task/1197/
 #include <bits/stdc++.h>
 

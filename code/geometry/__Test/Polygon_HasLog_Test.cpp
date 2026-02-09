@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // https://open.kattis.com/problems/joiningflows
 #include <bits/stdc++.h>
 

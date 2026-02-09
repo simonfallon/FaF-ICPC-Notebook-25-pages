@@ -1,3 +1,5 @@
+#include "../template.h"
+
 typedef double ld;
 const ld PI = acos(-1.0L);
 struct pt {

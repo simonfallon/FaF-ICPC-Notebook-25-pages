@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // O (V*E) 
 //Sacado del Vasito
 vector<int> g[MAXN]; // [0,n)->[0,m)

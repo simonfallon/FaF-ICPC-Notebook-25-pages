@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // https://szkopul.edu.pl/problemset/problem/p73RF9garyZ3keuGDIdyomLv/site/?key=statement
 #include <bits/stdc++.h>
 

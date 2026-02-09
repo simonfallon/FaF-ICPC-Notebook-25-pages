@@ -1,3 +1,5 @@
+#include "../template.h"
+
 #include "line.cpp"
 #include "circle.cpp"
 #include "convex_hull.cpp"

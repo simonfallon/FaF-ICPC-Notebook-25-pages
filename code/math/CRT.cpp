@@ -1,3 +1,5 @@
+#include "../template.h"
+
 pll extendedEuclid(ll a, ll b){ // a * x + b * y = __gcd(a,b)
 	ll x,y;
 	if (b==0) return {1,0};

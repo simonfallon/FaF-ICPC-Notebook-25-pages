@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // node father is useful to keep track of the chain of each node
 // alternative: splay tree
 // IMPORTANT: add pointer f in struct item

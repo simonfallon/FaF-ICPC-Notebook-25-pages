@@ -1,3 +1,5 @@
+#include "../template.h"
+
 typedef ll T;
 const T is_query = -(1LL << 62);
 struct line {

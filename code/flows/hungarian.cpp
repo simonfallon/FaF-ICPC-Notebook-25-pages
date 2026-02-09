@@ -1,3 +1,5 @@
+#include "../template.h"
+
 const ld inf = 1e18; // To Maximize set "inf" to 0, and negate costs
 inline bool zero(ld x){ return x == 0; } // For Integer/LL --> change to x == 0
 struct Hungarian{

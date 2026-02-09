@@ -1,3 +1,5 @@
+#include "../template.h"
+
 #pragma GCC optimize("O3")
 //(UNCOMMENT WHEN HAVING LOTS OF RECURSIONS)\
 #pragma comment(linker, "/stack:200000000")

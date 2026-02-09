@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // example that supports range reverse and addition updates, and range sum query
 // (commented parts are specific to this  problem)
 typedef struct item* pitem;

@@ -1,3 +1,5 @@
+#include "../template.h"
+
 #define sz(c) ((int)c.size())
 // asume que el dinic YA ESTA tirado
 // asume que nodes-1 y nodes-2 son la fuente y destino

@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // https://www.spoj.com/problems/MINMOVE/
 #include <bits/stdc++.h>
 

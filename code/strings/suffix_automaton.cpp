@@ -1,3 +1,5 @@
+#include "../template.h"
+
 struct node {
   int len, link;
   map<char, int> to;  // if TLE --> change to array<int, 27> to; 

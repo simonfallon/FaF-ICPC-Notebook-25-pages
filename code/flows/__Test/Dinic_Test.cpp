@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // https://codeforces.com/gym/104467/problem/H
 #include <bits/stdc++.h>
 #define fi first

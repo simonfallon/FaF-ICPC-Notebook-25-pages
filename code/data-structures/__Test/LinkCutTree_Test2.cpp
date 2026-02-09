@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // https://codeforces.com/gym/104713/problem/K
 #include <bits/stdc++.h>
 using namespace std;

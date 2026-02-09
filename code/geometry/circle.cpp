@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // Add point.cpp and line.cpp Basic operators
 struct circle {
 	pt o; ld r;

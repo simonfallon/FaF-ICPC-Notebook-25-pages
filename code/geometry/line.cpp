@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // Add point.cpp Basic operators
 struct line{
   pt v;  ld c;

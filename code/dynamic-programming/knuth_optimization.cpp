@@ -1,3 +1,5 @@
+#include "../template.h"
+
 const int nax = 1e3+20;
 const ll inf = LONG_LONG_MAX;
 ll dp[nax][nax];

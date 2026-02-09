@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // Complexity O(N*2^N)
 const int N;
 int dp[1<<N][N+1];

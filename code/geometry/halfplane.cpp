@@ -1,3 +1,5 @@
+#include "../template.h"
+
 typedef double ld;
 const ld eps = 1e-7, inf = 1e12;
 struct pt {  // for 3D add z coordinate

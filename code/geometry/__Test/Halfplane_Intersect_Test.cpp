@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // https://open.kattis.com/problems/bigbrother
 #include <bits/stdc++.h>
 

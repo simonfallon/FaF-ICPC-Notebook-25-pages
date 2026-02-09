@@ -1,3 +1,5 @@
+#include "../template.h"
+
 const ll inf = 1e18;
 const int nax = 1e3+20, kax = 20;
 

@@ -1,3 +1,5 @@
+#include "../template.h"
+
 vi get_phi(string &s) { // O(|s|)
   int j = 0, n = sz(s); vi pi(n);
   for1(i,n-1){

@@ -1,3 +1,5 @@
+#include "../template.h"
+
 struct edge {
 	int u, v, comp; //A que componente biconexa pertenece
 	bool bridge; //Si la arista es un puente

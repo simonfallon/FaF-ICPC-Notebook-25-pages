@@ -1,3 +1,5 @@
+#include "../template.h"
+
 int binpow(int b, int e) {
 	int ans = 1;
 	for (; e; b = 1LL*b*b%mod, e /= 2)

@@ -1,3 +1,5 @@
+#include "../template.h"
+
 struct pt{
   ld x, y;
   pt(){}

@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // taken from https://codeforces.com/blog/entry/61306
 struct ber_ma{
 	vi BM(vi &x){

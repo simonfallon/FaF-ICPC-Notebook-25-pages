@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // https://open.kattis.com/problems/allpairspath
 #include <bits/stdc++.h>
 

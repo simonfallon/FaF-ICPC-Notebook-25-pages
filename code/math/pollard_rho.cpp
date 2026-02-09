@@ -1,3 +1,5 @@
+#include "../template.h"
+
 ll rho(ll n){
 	if(!(n&1))return 2;
 	ll x=2,y=2,d=1;

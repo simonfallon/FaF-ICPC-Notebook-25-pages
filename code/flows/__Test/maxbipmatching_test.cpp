@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // UVA 1184 - AC
 // https://uva.onlinejudge.org/index.php?option=onlinejudge&Itemid=99999999&category=246&page=show_problem&problem=3625
 #include <bits/stdc++.h>

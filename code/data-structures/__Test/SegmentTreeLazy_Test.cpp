@@ -1,3 +1,5 @@
+#include "../template.h"
+
 #include <bits/stdc++.h>
 
 #define el '\n'

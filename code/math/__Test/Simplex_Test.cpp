@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // https://codeforces.com/gym/103443/problem/C
 #include <bits/stdc++.h>
 #define forn(i,n) for(int i=0; i<n; i++)

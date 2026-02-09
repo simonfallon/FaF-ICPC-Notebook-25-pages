@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // https://algo.sk/br24/problem.php?problem=d2-avgavg
 #include <bits/stdc++.h>
 

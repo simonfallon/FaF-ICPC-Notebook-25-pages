@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // https://www.spoj.com/problems/BRKSTRNG/
 #include <bits/stdc++.h>
 #define forn(i,n) for(int i=0; i<n; ++i)

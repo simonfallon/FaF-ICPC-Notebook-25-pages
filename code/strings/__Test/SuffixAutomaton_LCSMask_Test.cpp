@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // https://www.spoj.com/problems/LCS2/
 #include <bits/stdc++.h>
 

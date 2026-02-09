@@ -1,3 +1,5 @@
+#include "../template.h"
+
 // https://www.spoj.com/problems/SUBLEX/
 #include <bits/stdc++.h>
  
