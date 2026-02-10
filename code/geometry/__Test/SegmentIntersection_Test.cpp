@@ -3,16 +3,16 @@
 // https://codeforces.com/problemset/problem/793/C
 const int N = 1e5+10, mod = 1e9+7;
 struct pt{
-	ld x, y;
-	pt(){}
-	pt(ld x, ld y): x(x), y(y){}
+  ld x, y;
+  pt(){}
+  pt(ld x, ld y): x(x), y(y){}
   
   pt operator+(pt p){ return pt(x+p.x, y+p.y); }
-	pt operator-(pt p){ return pt(x-p.x, y-p.y); }
-	pt operator*(ld t){ return pt(x*t, y*t); }
-	pt operator/(ld t){ return pt(x/t, y/t); }
-	ld operator*(pt p){ return x*p.x + y*p.y; }
-	ld operator%(pt p){ return x*p.y - y*p.x; }
+  pt operator-(pt p){ return pt(x-p.x, y-p.y); }
+  pt operator*(ld t){ return pt(x*t, y*t); }
+  pt operator/(ld t){ return pt(x/t, y/t); }
+  ld operator*(pt p){ return x*p.x + y*p.y; }
+  ld operator%(pt p){ return x*p.y - y*p.x; }
 
   ld side(pt p, pt q){ return (q - p) % (*this - p);}
   bool in_disk(pt p, pt q){ return (p - *this) * (q - *this) <= 0; }

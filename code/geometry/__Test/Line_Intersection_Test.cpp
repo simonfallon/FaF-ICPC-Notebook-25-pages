@@ -9,7 +9,7 @@ struct pt{
   pt(){}
   pt(ld x, ld y): x(x), y(y){}
   bool operator<(pt p)const{ // for convex hull/set/map
-		return x < p.x-eps || (abs(x-p.x) <=eps && y < p.y-eps);}
+    return x < p.x-eps || (abs(x-p.x) <=eps && y < p.y-eps);}
   pt operator-(pt p){return pt(x-p.x, y-p.y);}
   pt operator+(pt p){return pt(x+p.x, y+p.y);}
   pt operator*(ld t){return pt(x*t, y*t);}

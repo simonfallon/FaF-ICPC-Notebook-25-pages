@@ -22,7 +22,7 @@ struct mink_sum{
     pol.reserve(sz(p) + sz(q));
     reorder(p),  reorder(q);
     forn(i, 2) p.pb(p[i]), q.pb(q[i]);
-	  int i = 0, j = 0;
+    int i = 0, j = 0;
     while(i+2 < sz(p) || j+2 < sz(q)){
       pol.pb(p[i] + q[j]);
       auto cro = (p[i+1] - p[i]) % (q[j+1] - q[j]);

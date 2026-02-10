@@ -27,8 +27,7 @@ typedef vector<ii> vii;
 typedef vector<ll> vll;
 typedef vector<ld> vd;
 
-const int inf = 1e9;
-const int nax = 1e5+200;
+const int inf = 1e9, nax = 1e5+200, mod = 1e9 + 7;
 const ld pi = acos(-1);
 const ld eps= 1e-9;
 int dr[] = {1,-1,0, 0,1,-1,-1, 1};
