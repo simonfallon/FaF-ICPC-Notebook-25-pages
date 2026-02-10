@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/group/XrhoJtxCjm/contest/422671/problem/H
 const ld pi = acos(-1), eps = 1e-8;

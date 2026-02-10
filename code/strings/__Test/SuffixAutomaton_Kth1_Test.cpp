@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://www.spoj.com/problems/SUBLEX/
 struct node {
@@ -7,7 +7,7 @@ struct node {
   bool terminal;
 };
  
-const int N = 4e5+1; // el doble del MAXN
+const int N = 4e5+1; // el doble del nax
 node st[N];
 int sz, dp[N], last;
 // dp[V] = # de caminos / (palabras distintas) desde V

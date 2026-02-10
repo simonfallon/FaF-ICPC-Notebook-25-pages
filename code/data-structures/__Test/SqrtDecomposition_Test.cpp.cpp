@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 struct sqrt_decomp{
   int n, len;  vi a, b;

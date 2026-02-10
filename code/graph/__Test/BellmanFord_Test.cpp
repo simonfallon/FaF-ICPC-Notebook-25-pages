@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://cses.fi/problemset/task/1197/
 const int N = 2501;

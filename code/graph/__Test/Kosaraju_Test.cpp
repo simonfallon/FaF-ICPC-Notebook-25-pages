@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/problemset/problem/894/E
 const int N = 1e6 + 10, mx = 1e8;

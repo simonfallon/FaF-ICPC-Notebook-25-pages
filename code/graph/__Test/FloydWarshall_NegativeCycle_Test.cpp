@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://open.kattis.com/problems/allpairspath
 const int N = 151, Q = 1001, inf = 1e9;

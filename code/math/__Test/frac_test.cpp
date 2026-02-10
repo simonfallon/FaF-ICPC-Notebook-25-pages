@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://algo.sk/br24/problem.php?problem=d2-avgavg
 struct frac{

@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/group/Ohoz9kAFjS/contest/266572/problem/B
 // Corte minimo: vertices con dist[v]>=0 (del lado de src) VS.  dist[v]==-1 (del lado del dst)

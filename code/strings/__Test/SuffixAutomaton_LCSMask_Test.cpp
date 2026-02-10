@@ -1,11 +1,11 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://www.spoj.com/problems/LCS2/
 struct node { 
   int len, link;
   array<int, 27> to; 
 };
-const int N = 2e6 + 30; // el doble del MAXN
+const int N = 2e6 + 30; // el doble del nax
 node st[N];
 int sz, last, occ[N], dp[N], all_mask, ans = 0; 
 // occ[V] = sz(end_pos[V]) : # ocurrencias de substrs de nodo V en S

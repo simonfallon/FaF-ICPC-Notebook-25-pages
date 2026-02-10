@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/group/hzSLIARNBN/contest/467095/problem/H
 const int len = 1e7, neutro = 1e9;

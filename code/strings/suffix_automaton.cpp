@@ -6,7 +6,7 @@ struct node {
   bool terminal;
 };
 
-const int N = 4e5+1; // el doble del MAXN
+const int N = 4e5+1; // el doble del nax
 node st[N];
 int sz, last, occ[N], cnt[N];
 bool seen[N];

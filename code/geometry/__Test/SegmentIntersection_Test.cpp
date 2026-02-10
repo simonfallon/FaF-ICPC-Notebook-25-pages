@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/problemset/problem/793/C
 const int N = 1e5+10, mod = 1e9+7;

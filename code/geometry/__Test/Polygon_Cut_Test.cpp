@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // http://codeforces.com/problemset/problem/280/A
 const double DINF = 1e20, eps = 1e-7, pi = acos(-1);

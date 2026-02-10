@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/gym/104467/problem/H
 const int N = 1e5 + 10;

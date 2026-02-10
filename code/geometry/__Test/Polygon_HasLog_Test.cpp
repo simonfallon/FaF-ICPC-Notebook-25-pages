@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://open.kattis.com/problems/joiningflows
 const int inf = 1e9, mod = 1e9+7, N = 1e6 + 10;

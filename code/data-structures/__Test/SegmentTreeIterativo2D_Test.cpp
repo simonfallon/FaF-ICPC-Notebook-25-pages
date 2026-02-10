@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/contest/869/problem/E
 const int N = 2500 + 1;

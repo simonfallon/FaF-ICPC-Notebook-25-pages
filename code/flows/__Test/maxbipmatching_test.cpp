@@ -1,10 +1,10 @@
-#include "../template.h"
+#include "../../template.h"
 
 // UVA 1184 - AC
 // https://uva.onlinejudge.org/index.php?option=onlinejudge&Itemid=99999999&category=246&page=show_problem&problem=3625
-vector<int> g[MAXN]; // [0,n)->[0,m)
+vector<int> g[nax]; // [0,n)->[0,m)
 int n,m;
-int mat[MAXM];bool vis[MAXN];
+int mat[MAXM];bool vis[nax];
 int match(int x){
 	if(vis[x])return 0;
 	vis[x]=true;

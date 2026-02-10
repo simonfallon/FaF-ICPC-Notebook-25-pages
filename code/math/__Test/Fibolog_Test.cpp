@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 pll fib_log(ll n, ll mod){
   if (n == 0) return {0, 1};

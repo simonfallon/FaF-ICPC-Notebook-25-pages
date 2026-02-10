@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/problemset/problem/321/E
 const int N = 4e3 + 20, K = 801, inf = 2e9;

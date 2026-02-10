@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://www.spoj.com/problems/DYNACON1/
 struct Node { // Splay tree. Root's pp contains tree's parent.

@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 //https://codeforces.com/group/DA7Y6pkafQ/contest/452264/problem/C
 struct pt{

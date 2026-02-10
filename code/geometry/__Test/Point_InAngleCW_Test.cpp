@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/problemset/gymProblem/102028/D
 const ld pi = acos(-1), inf = 1000000000;

@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/contest/452/problem/E
 const int mod = 1e9+7;
@@ -10,7 +10,7 @@ struct node {
   int len, link;
   array<int, 27> to; 
 };
-const int N = 6e5 + 10; // el doble del MAXN
+const int N = 6e5 + 10; // el doble del nax
 node st[N];
 int sz, last, occ[N][3], dp[N], ans[N]; 
 // occ[V] = sz(end_pos[V]) : # ocurrencias de substrs de nodo V en S

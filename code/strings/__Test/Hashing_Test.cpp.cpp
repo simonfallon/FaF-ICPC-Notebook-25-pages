@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/problemset/problem/710/F
 /// 1000234999, 1000567999, 1000111997, 1000777121, 999727999, 1070777777

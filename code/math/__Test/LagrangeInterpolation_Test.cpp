@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/gym/104505/problem/A
 const int mod = 1e9 + 7;

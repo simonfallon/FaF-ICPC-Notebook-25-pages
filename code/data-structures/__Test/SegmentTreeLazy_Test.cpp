@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 struct stree{
   int n, neutro = 0;   vii t;  vi lazy;

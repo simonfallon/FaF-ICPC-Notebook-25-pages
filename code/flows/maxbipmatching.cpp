@@ -2,9 +2,9 @@
 
 // O (V*E) 
 //Sacado del Vasito
-vector<int> g[MAXN]; // [0,n)->[0,m)
+vector<int> g[nax]; // [0,n)->[0,m)
 int n,m;
-int mat[MAXM];bool vis[MAXN];
+int mat[MAXM];bool vis[nax];
 int match(int x){
 	if(vis[x])return 0;
 	vis[x]=true;

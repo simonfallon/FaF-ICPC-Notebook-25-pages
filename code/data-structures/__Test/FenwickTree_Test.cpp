@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/problemset/problem/597/C
 struct fwtree{ // 0-indexed

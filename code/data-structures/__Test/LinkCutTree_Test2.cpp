@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/gym/104713/problem/K
 struct Node { // Splay tree. Root's pp contains tree's parent.

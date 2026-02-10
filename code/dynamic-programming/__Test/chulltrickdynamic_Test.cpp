@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/gym/104252/problem/B
 const T is_query = -(1LL << 62);

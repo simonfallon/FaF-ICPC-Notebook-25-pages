@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://matcomgrader.com/problem/9598/colors-ii/
 const ld pi = acos(-1), eps = 0;

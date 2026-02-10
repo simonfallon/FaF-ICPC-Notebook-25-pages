@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/contest/128/problem/B
 struct node {
@@ -7,7 +7,7 @@ struct node {
   bool terminal;
 };
 
-const int N = 4e5+1; // el doble del MAXN
+const int N = 4e5+1; // el doble del nax
 node st[N];
 int sz, last, occ[N]; 
 struct suf_aut{

@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://www.spoj.com/problems/BRKSTRNG/
 const int N = 1e3+20;

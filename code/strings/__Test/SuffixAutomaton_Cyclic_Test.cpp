@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/problemset/problem/235/C
 struct node { 
@@ -6,7 +6,7 @@ struct node {
   array<int, 26> to; 
 };
 
-const int N = 2e6+1; // el doble del MAXN
+const int N = 2e6+1; // el doble del nax
 node st[N];
 int sz, last, cnt[N], seen[N], idx; 
 // cnt[V] = sz(end_pos[V]) : # occ de substrs de nodo V en S

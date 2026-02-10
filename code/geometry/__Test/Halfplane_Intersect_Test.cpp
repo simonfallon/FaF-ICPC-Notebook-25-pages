@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://open.kattis.com/problems/bigbrother
 const ld eps = 1e-7, inf = 1e12;

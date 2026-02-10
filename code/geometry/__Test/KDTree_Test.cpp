@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 /// https://codeforces.com/gym/100402/attachments  (C)
 const ll inf = 1e18;

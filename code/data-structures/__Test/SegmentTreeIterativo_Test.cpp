@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/contest/1860/problem/C
 const int N = 3e5;  // limit for array size

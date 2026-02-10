@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://codeforces.com/gym/103443/problem/C
 const ld eps = 1e-9, inf = 1e18;

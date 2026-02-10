@@ -1,11 +1,11 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://www.spoj.com/problems/NSUBSTR/
 struct node { 
   int len, link;
   array<int, 26> to; 
 };
-const int N = 4e5 + 10; // el doble del MAXN
+const int N = 4e5 + 10; // el doble del nax
 node st[N];
 int sz, last, occ[N], F[N]; 
 // occ[V] = sz(end_pos[V]) : # ocurrencias de substrs de nodo V en S

@@ -1,11 +1,11 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://www.spoj.com/problems/MINMOVE/
 struct node { 
   int len, link;
   array<int, 26> to; 
 };
-const int N = 4e5 + 10; // el doble del MAXN
+const int N = 4e5 + 10; // el doble del nax
 node st[N];
 int sz, last, fi_pos[N]; 
 // cnt[V] = sz(end_pos[V]) : # occ de substrs de nodo V en S

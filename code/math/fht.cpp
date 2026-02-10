@@ -1,6 +1,6 @@
 #include "../template.h"
 
-ll c1[MAXN+9],c2[MAXN+9];  // MAXN must be power of 2 !!
+ll c1[nax+9],c2[nax+9];  // nax must be power of 2 !!
 void fht(ll* p, int n, bool inv){
 	for(int l=1;2*l<=n;l*=2)for(int i=0;i<n;i+=2*l)forn(j,l){
 		ll u=p[i+j],v=p[i+l+j];

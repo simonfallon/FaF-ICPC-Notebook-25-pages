@@ -1,4 +1,4 @@
-#include "../template.h"
+#include "../../template.h"
 
 // https://szkopul.edu.pl/problemset/problem/p73RF9garyZ3keuGDIdyomLv/site/?key=statement
 const ld inf = 1e18, pi = acos(-1), eps = 1e-8;
