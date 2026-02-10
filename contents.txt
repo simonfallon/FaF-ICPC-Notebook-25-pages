@@ -5,7 +5,6 @@
 
 [C++]
 c++/template.cpp	C++ template
-c++/alternativa.cpp	Opcion
 c++/bits.cpp	Bits Manipulation
 c++/random.cpp	Random
 c++/custom_hash.cpp	Custom Hash
