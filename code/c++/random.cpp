@@ -2,13 +2,21 @@
 
 // Declare random number generator
 mt19937_64 rng(0); // 64 bit, seed = 0
-mt19937 rng(chrono::steady_clock::now().time_since_epoch().count()); // 32 bit
+// 32 bit with random seed
+using clock = chrono::steady_clock;
+auto cur_time = clock::now().time_since_epoch().count();
+mt19937 rng(cur_time); 
 
 // Use it to shuffle a vector
-shuffle(all(vec), rng);
+int rd(int l, int r) { 
+    return uniform_int_distribution<int>(l, r)(rng);
+}
+ld rd(ld l, ld r) { 
+    return uniform_real_distribution<ld>(l, r)(rng);
+}
 
-// Create int/real uniform dist. of type T in range [l, r]
-uniform_int_distribution<T> / uniform_real_distribution<T> dis(l, r);
-dis(rng); // generate a random number in [l, r]
-
-int rd(int l, int r) { return uniform_int_distribution<int>(l, r)(rng);}
+int main(){
+    vi vec(100);
+    iota(all(vec), 0);
+    shuffle(all(vec), rng);
+}
