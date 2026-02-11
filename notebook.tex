@@ -2,6 +2,8 @@
 \usepackage[a4paper,landscape,left=0.3cm,right=0.3cm,top=1cm,bottom=0.3cm,headheight=12pt,headsep=4pt]{geometry}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{ifthen}
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{tocloft}
@@ -71,8 +73,16 @@
 % Configure headers
 \fancyhf{}
 \fancyhead[L]{Que bendición - EAFIT University}
+\fancyhead[C]{%
+  \ifthenelse{\equal{\firstleftmark}{\lastleftmark}}%
+    {\leftmark}%
+    {\firstleftmark\ \& \lastleftmark}%
+}
 \fancyhead[R]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
+
+% Customize section marks to include section number
+\renewcommand{\sectionmark}[1]{\markboth{\thesection. #1}{}}
 
 \begin{document}
 \pagestyle{fancy}
@@ -85,14 +95,16 @@
 \end{multicols}
 
 \setlength{\columnsep}{10pt}
-\begin{multicols}{2}
-\input contents.tex
-
+\begin{multicols}{3}
+\input{contents.tex}
 \end{multicols}
+
 \setlength{\columnseprule}{0pt}
 \setlength{\columnsep}{10pt}
 \begin{multicols}{2}
+{\fontsize{8}{6}\selectfont
 \input Theory.tex
+}
 \end{multicols}
 
 \pagebreak

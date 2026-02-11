@@ -88,23 +88,39 @@ def filter_code(filename):
 
     return temp_filename
 
-def get_tex(sections):
-    tex = ''
-    for (section_name, subsections) in sections:
-        tex += '\\section{%s}\n' % texify(section_name)
-        for (filename, subsection_name) in subsections:
-            tex += '\\subsection{%s}\n' % texify(subsection_name)
-            temp_file = filter_code(filename)
-            tex += '\\raggedbottom\\lstinputlisting[style=%s]{%s}\n' % (get_style(filename), temp_file)
-            tex += '\\hrulefill\n'
-        tex += '\n'
+def get_tex_section(section_name, subsections):
+    """Generate LaTeX for a single section"""
+    tex = '\\section{%s}\n' % texify(section_name)
+    for (filename, subsection_name) in subsections:
+        tex += '\\subsection{%s}\n' % texify(subsection_name)
+        temp_file = filter_code(filename)
+        tex += '\\raggedbottom\\lstinputlisting[style=%s]{%s}\n' % (get_style(filename), temp_file)
+        tex += '\\hrulefill\n'
+    tex += '\n'
     return tex
+
+def get_tex(sections):
+    """Generate LaTeX for all sections - all will use 3 columns"""
+    tex_all = ''
+
+    for (section_name, subsections) in sections:
+        # Skip the Fin section as it has no content
+        if section_name == 'Fin':
+            continue
+
+        section_tex = get_tex_section(section_name, subsections)
+        tex_all += section_tex
+
+    return tex_all
 
 if __name__ == "__main__":
     sections = get_sections()
-    tex = get_tex(sections)
+    tex_all = get_tex(sections)
+
+    # Write all content to a single file
     with open('contents.tex', 'w') as f:
-        f.write(tex)
+        f.write(tex_all)
+
     latexmk_options = ["latexmk","-pdf", "notebook.tex"]
     subprocess.call(latexmk_options)
     remove_files = ["notebook.fls", "notebook.aux", "notebook.fdb_latexmk",
