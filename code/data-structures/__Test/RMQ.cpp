@@ -1,13 +1,28 @@
-#include "../../template.h"
+#include <bits/stdc++.h>
 
-// https://codeforces.com/gym/103185/problem/F
+#define forn(i,n) for(int i=0; i < n; ++i)
+#define for1(i,n) for(int i=1; i <= n; ++i)
+#define fore(i,l,r) for(int i=l; i <= r; ++i)
+#define fored(i,l,r) for(int i=r; i >= l; --i)
+#define el '\n'
+#define d(x) cout << #x << " : " << x << el;
+#define all(v) v.begin(),v.end()
+#define sz(v) int(v.size())
+
+using namespace std;
+
+typedef long long ll;
+typedef vector<ll> vll;
 const ll inf = 1e18;
 const int N = 8e3 + 20, K = 13;  //K  has to satisfy K> log nax + 1
+
+vll dp[N];
 ll st[N][K];
+
 struct RMQ{
   ll neutro = inf;
   inline ll oper(ll a, ll b){ return a < b ? a : b; }
-  RMQ(vi& a){
+  RMQ(vll& a){
     forn(i, sz(a)) st[i][0] = a[i];
     for1(j, K-1)
       forn(i, sz(a) - (1 << j) + 1)
@@ -20,15 +35,13 @@ struct RMQ{
   }
 };
 
-vi dp[N];
-int n;
 int main(){
   ios_base::sync_with_stdio(0);
   cin.tie(0); cout.tie(0);
-  cin >> n; 
-  vi a(n); forn(i, n) cin >> a[i];
+  int n; cin >> n; 
+  vll a(n); forn(i, n) cin >> a[i];
   
-  vi b = a;  sort(all(b), greater<>());
+  vll b = a;  sort(all(b), greater<>());
   ll ans[n][2], sum = 0;
   forn(i, n){
     dp[i].resize(n);

@@ -1,10 +1,24 @@
-#include "../../template.h"
+#include <bits/stdc++.h>
+ 
+#define sz(v) v.size()
+#define pb push_back
+#define el '\n'
+#define forn(i,n) for(int i = 0; i < n; ++i)
+#define fored(i,l,r) for(int i = r; i >= l; --i)
+#define all(v) v.begin(),v.end()
+ 
+using namespace std;
+ 
+typedef vector<int> vi;
+typedef pair<int, int> ii;
 
 // https://codeforces.com/gym/100551/problem/A
 struct dsu {
   vi p, r, c;  int comp;
-  dsu(int n): p(n), r(n, 1), comp(n){iota(all(p), 0);}
-  int find_set(int i){return i == p[i] ? i : find_set(p[i]);}
+  dsu(int n): p(n), r(n, 1), comp(n){ iota(all(p), 0); }
+  int find_set(int i){
+    return i == p[i] ? i : find_set(p[i]);
+  }
   void union_set(int i, int j){
     if((i = find_set(i)) == (j = find_set(j))) return;
     if(r[i] > r[j]) swap(i, j);
@@ -38,7 +52,9 @@ struct DynCon {
   void query(){ q.pb({QUERY, -1, -1});  mt.pb(-1);}
   void process(){ // answers all queries in order
     if(!sz(q)) return;
-    forn(i, sz(q)) if(q[i].type == ADD && mt[i] < 0) mt[i] = sz(q);
+    forn(i, sz(q)) 
+      if(q[i].type == ADD && mt[i] < 0) 
+        mt[i] = sz(q);
     go(0, sz(q));
   }
   void go(int s, int e){
@@ -47,9 +63,13 @@ struct DynCon {
       return;
     }
     int k = sz(uf.c), m = (s+e)/2;
-    fored(i, m, e-1) if(mt[i] >= 0 && mt[i] < s) uf.union_set(q[i].u, q[i].v);
+    fored(i, m, e-1) 
+      if(mt[i] >= 0 && mt[i] < s) 
+        uf.union_set(q[i].u, q[i].v);
     go(s, m);  uf.rollback(k);
-    fored(i, s, m-1) if(mt[i] >= e) uf.union_set(q[i].u, q[i].v);
+    fored(i, s, m-1) 
+      if(mt[i] >= e) 
+        uf.union_set(q[i].u, q[i].v);
     go(m, e);  uf.rollback(k);
   }
 };

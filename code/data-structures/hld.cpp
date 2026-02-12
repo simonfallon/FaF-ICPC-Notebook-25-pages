@@ -34,7 +34,7 @@ int query_hld( int u, int v ) {
     u = par[ head[u] ];
   }
   if( dep[u] > dep[v] ) swap(u, v);
-  val = val+query_DS(in[u], in[v]);
+  val = val + query_DS(in[u], in[v]);
   return val;
 /// when updates are on edges use: (line 36)
 ///   if (dep[u] == dep[v]) return val;

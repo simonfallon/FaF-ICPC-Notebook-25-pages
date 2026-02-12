@@ -5,12 +5,17 @@
 struct query {
   int l, r, idx;
 };
-int S; // s = sqrt(n)
+vector<query> q;
+vi ans;
+int S, n; // s = sqrt(n)
 bool cmp (query a, query b) {
-  int x = a.l/S;
-  if (x != b.l/S) return x < b.l/S;
+  int x = a.l / S;
+  if (x != b.l / S) return x < b.l / S;
   return (x&1 ? a.r < b.r : a.r > b.r);
 }
+void add(int i){}
+void del(int i){}
+int get_ans(){}
 void solve(){
   S = sqrt(n); // n = size of array
   sort(all(q), cmp);

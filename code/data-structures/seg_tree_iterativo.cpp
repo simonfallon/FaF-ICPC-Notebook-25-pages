@@ -19,7 +19,9 @@ struct stree{
     }
     return op(vl, vr);
   }
-  void upd(int p, int val) {  // set val at position p (0 - idx)
-    for (t[p += n] = val; p > 1; p >>= 1) t[p>>1] = op(t[p], t[p^1]);
+  // set val at position p (0 - idx)
+  void upd(int p, int val) { 
+    for (t[p += n] = val; p > 1; p >>= 1) 
+      t[p>>1] = op(t[p], t[p^1]);
   }
 };

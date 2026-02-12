@@ -1,18 +1,40 @@
-#include "../../template.h"
-
 // https://codeforces.com/group/hzSLIARNBN/contest/467095/problem/H
+
+#include <bits/stdc++.h>
+
+#define forn(i,n) for(int i=0; i < n; ++i)
+#define for1(i,n) for(int i=1; i <= n; ++i)
+#define el '\n'
+#define fi first
+#define se second
+#define pb push_back
+#define sz(v) v.size()
+#define all(v) v.begin(),v.end()
+#define d(x) cout << #x << ": " << x <<  el;
+ 
+using namespace std;
+ 
+typedef vector<int> vi;
+typedef long long ll;
+typedef vector<ll> vll;
+typedef pair<int,int> ii;
+typedef vector<ii> vii;
+
 const int len = 1e7, neutro = 1e9;
 struct node{ int mn, l, r; };
 struct stree{
   vi rts{0};  vector<node> t;
   int n, idx{0}, l, r, pos, val;
   inline int oper(int a, int b){ return a < b ? a : b; }
-  stree(const vi &a): n(sz(a)), t(len){ build(0, n-1, a); }
+  stree(const vi &a): n(sz(a)), t(len){ 
+    build(0, n-1, a); 
+  }
   int build(int tl, int tr, const vi &a){
     int v = idx++;
     if(tl == tr){ t[v].mn = a[tl]; return v; }
     int tm = (tl + tr) >> 1;
-    t[v].l = build(tl, tm, a),  t[v].r = build(tm + 1, tr, a);
+    t[v].l = build(tl, tm, a);
+    t[v].r = build(tm + 1, tr, a);
     t[v].mn = oper(t[t[v].l].mn, t[t[v].r].mn);
     return v;
   }
@@ -20,7 +42,9 @@ struct stree{
     if(tl > r || tr < l) return neutro;
     if(l <= tl && tr <= r) return t[v].mn;
     int tm = (tl + tr) >> 1;
-    return oper(que(t[v].l, tl, tm), que(t[v].r, tm + 1, tr));
+    return oper(
+      que(t[v].l, tl, tm), que(t[v].r, tm + 1, tr)
+    );
   }
   int upd(int prv, int tl, int tr){
     int v = idx++;
@@ -32,8 +56,13 @@ struct stree{
     t[v].mn = oper(t[t[v].l].mn, t[t[v].r].mn);
     return v;
   }
-  int query(int v, int cl, int cr){ l = cl, r = cr;  return que(v, 0, n-1); }
-  void upd(int i, int x){ pos = i, val = x, rts.pb(upd(rts.back(), 0, n-1)); }
+  // Methods to be used from main!
+  int query(int v, int cl, int cr){
+    l = cl, r = cr;  return que(v, 0, n-1); 
+  }
+  void upd(int i, int x){
+    pos = i, val = x, rts.pb(upd(rts.back(), 0, n-1));
+  }
 };
 
 const int N = 3e5 + 20;
