@@ -5,7 +5,8 @@ const ll inf = 1e17;
 struct PushRelabel{
   struct edge {
     int to, rev; ll f, cap;
-    edge(int to, int rev, ll cap, ll f = 0) : to(to), rev(rev), f(f), cap(cap) {}
+    edge(int to, int rev, ll cap, ll f = 0) 
+      : to(to), rev(rev), f(f), cap(cap) {}
   };
   void addEdge(int s, int t, ll cap){
     g[s].pb(edge(t, sz(g[t]), cap));
@@ -13,7 +14,7 @@ struct PushRelabel{
   }
 
   int n, s, t;
-  vi height; vector<ll> excess;
+  vi h; vector<ll> excess;
   vector<vector<edge>> g;
 
   PushRelabel(int n_){
@@ -28,38 +29,37 @@ struct PushRelabel{
   void relabel(int u){
     ll d = inf;
     for (edge e : g[u])
-      if (e.cap - e.f > 0)
-        d = min(d,(ll) height[e.to]);
+      if (e.cap - e.f > 0) d = min(d, ll(h[e.to]));
 
-    if (d < inf) height[u] = d + 1;
+    if (d < inf) h[u] = d + 1;
   }
-  vi find_max_height_vertices(int s, int t) {
-    vi max_height;
+  vi find_max_height_vs(int s, int t) {// max h vertices
+    vi max_h;
     for (int i = 0; i < n; i++)
       if (i != s && i != t && excess[i] > 0) {
-        if (!max_height.empty() && height[i] > height[max_height[0]])
-          max_height.clear();
-        if (max_height.empty() || height[i] == height[max_height[0]])
-          max_height.push_back(i);
+        if (!max_h.empty() && h[i] > h[max_h[0]])
+          max_h.clear();
+        if (max_h.empty() || h[i] == h[max_h[0]])
+          max_h.push_back(i);
       }
-    return max_height;
+    return max_h;
   }
 
   ll maxFlow(){
-    height.assign(n,0); excess.assign(n,0);
+    h.assign(n,0); excess.assign(n,0);
     ll max_flow = 0; bool pushed;
     vi current;
 
-    height[s] = n; excess[s] = inf;
+    h[s] = n; excess[s] = inf;
     for(edge &e: g[s])
         push(s,e);
 
-    while(!(current = find_max_height_vertices(s,t)).empty()){
+    while(!(current = find_max_height_vs(s,t)).empty()){
       for(int v: current){
         pushed = false;
         if(excess[v]==0) continue;
         for(edge &e : g[v]){
-          if(e.cap - e.f>0 && height[v]== height[e.to]+1){
+          if(e.cap - e.f>0 && h[v]== h[e.to]+1){
             pushed = true;
             push(v,e);
           }

@@ -11,13 +11,15 @@
 const ll inf = 1e18;
 struct edge {
   int to, rev; ll cap, f{0};
-  edge(int to, int rev, ll cap): to(to), rev(rev), cap(cap){}
+  edge(int to, int rev, ll cap)
+    : to(to), rev(rev), cap(cap){}
 };
 struct Dinic{
   int n, s, t; ll max_flow = 0;
   vector<vector<edge>> g;
   vi q, dis, work;
-  Dinic(int n, int s, int t): n(n), s(s), t(t), g(n), q(n){}
+  Dinic(int n, int s, int t)
+    : n(n), s(s), t(t), g(n), q(n){}
   void addEdge(int s, int t, ll cap){
     g[s].pb(edge(t, sz(g[t]), cap));
     g[t].pb(edge(s, sz(g[s])-1, 0));
@@ -30,7 +32,8 @@ struct Dinic{
     forn(qh, qt){
       int u = q[qh];
       for(auto& [v, _, cap, f]: g[u])
-        if(dis[v] < 0 && f < cap) dis[v] = dis[u] + 1, q[qt++] = v;
+        if(dis[v] < 0 && f < cap) 
+          dis[v] = dis[u] + 1, q[qt++] = v;
     }
     return dis[t] >= 0;
   }
@@ -56,7 +59,7 @@ struct Dinic{
       while(ll delta = dfs(s, inf)) cur_flow += delta;
     }
     max_flow += cur_flow;
-    // todos los nodos con dis[u]!=-1 vs los que tienen dis[v]==-1 forman el min-cut, (u,v)
+    // todos los nodos con dis[u]!=-1 vs los que tienen dis[v]==-1 forman el min-cut (u,v)
     return max_flow; 
   }
   vii min_cut(){
@@ -64,9 +67,10 @@ struct Dinic{
     vii cut;
     forn(u, n){
       if(dis[u] == -1) continue;
-      for(auto& e: g[u]) if(dis[e.to] == -1) cut.pb({u, e.to});
+      for(auto& e: g[u])
+        if(dis[e.to] == -1) cut.pb({u, e.to});
     }
-    sort(all(cut)),  cut.resize(unique(all(cut)) - cut.begin());
+    sort(all(cut)), cut.resize(unique(all(cut)) - cut.begin());
     return cut;
   }
 };

@@ -12,9 +12,19 @@ struct frac{
     ll g = __gcd(abs(num), abs(den));
     if(g) num /= g,  den /= g;
   }
-  frac operator+(const frac& b){ return {num*b.den + b.num*den, den*b.den};}
-  frac operator-(const frac& b){ return {num*b.den - b.num*den, den*b.den};}
-  frac operator*(const frac& b){ return {num*b.num, den*b.den};}
-  frac operator/(const frac& b){ return {num*b.den, den*b.num};}
-  bool operator<(const frac& b)const{ return num*b.den < den*b.num; }
+  frac operator+(const frac& b){ 
+    return {num*b.den + b.num*den, den*b.den};
+  }
+  frac operator-(const frac& b){ 
+    return {num*b.den - b.num*den, den*b.den};
+  }
+  frac operator*(const frac& b){ 
+    return {num*b.num, den*b.den};
+  }
+  frac operator/(const frac& b){ 
+    return {num*b.den, den*b.num};
+  }
+  bool operator<(const frac& b)const{ 
+    return num*b.den < den*b.num; 
+  }
 };

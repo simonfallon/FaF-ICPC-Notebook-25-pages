@@ -7,27 +7,29 @@ struct line {
 };
 
 struct cht {
-  vector<line> lines;
-  vector<ld> inter;
+  vector<line> ls; // Lines in the hull, sorted by slope
+  vector<ld> ints; // Intersections of consecutive lines
   int n;
   inline bool ok(line &a, line &b, line &c) {
     return a.inter(c) > a.inter(b);
   }
   void add(line &l) { /// m1 < m2 < m3 ...
-    n = sz(lines);
-    if(n && lines.back().m == l.m && lines.back().b >= l.b) return;
-    if(n == 1 && lines.back().m == l.m && lines.back().b < l.b) lines.pop_back(), n--;
-    while(n >= 2 && !ok(lines[n-2], lines[n-1], l)) {
-      --n;
-      lines.pop_back(); inter.pop_back();
+    n = sz(ls);
+    if(n && ls.back().m == l.m && ls.back().b >= l.b) 
+      return;
+    if(n== 1 && ls.back().m == l.m && ls.back().b < l.b){
+      n--; ls.pop_back();
     }
-    lines.pb(l); n++;
-    if(n >= 2) inter.pb(lines[n-2].inter(lines[n-1]));
+    while(n >= 2 && !ok(ls[n-2], ls[n-1], l)) {
+      --n; ls.pop_back(); ints.pop_back();
+    }
+    ls.pb(l); n++;
+    if(n >= 2) ints.pb(ls[n-2].inter(ls[n-1]));
   }
   ll get_max(ld x) {
-    if(sz(lines) == 0) return LLONG_MIN;
-    if(sz(lines) == 1) return lines[0].eval(x);
-    int pos = lower_bound(all(inter), x) - inter.begin();
-    return lines[pos].eval(x);
+    if(sz(ls) == 0) return LLONG_MIN;
+    if(sz(ls) == 1) return ls[0].eval(x);
+    int pos = lower_bound(all(ints), x) - ints.begin();
+    return ls[pos].eval(x);
   }
 };

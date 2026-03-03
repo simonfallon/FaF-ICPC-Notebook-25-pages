@@ -1,13 +1,16 @@
 #include "../template.h"
-
-const static int N = 2e6, alpha = 26, B = 30; // MAX: abecedario, bits
+// MAX: abecedario, bits
+const static int N = 2e6, alpha = 26, B = 30; 
 int to[N][alpha], cnt[N], sz;
-inline int conv(char ch){ return ch - 'a'; }  //  CAMBIAR
-string to_bin(int num, int bits){  // B: Max(bits),  bits: size 
-  return bitset<B>(num).to_string().substr(B - bits);}
+inline int conv(char ch){ return ch - 'a'; }  // CAMBIAR
+string to_bin(int num, int bits){ // Convert to binary
+  // B: Max(bits),  bits: size 
+  return bitset<B>(num).to_string().substr(B - bits);
+}
 // AGREGAR LO QUE HAYA QUE RESETEAR !!!!
 void init(){ 
-  forn(i, sz+1) cnt[i] = 0, memset(to[i], 0, sizeof to[i]);
+  forn(i, sz + 1) 
+    cnt[i] = 0, memset(to[i], 0, sizeof to[i]);
   sz = 0;
 }
 void add(const string &s){

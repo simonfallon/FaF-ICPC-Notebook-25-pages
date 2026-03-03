@@ -2,6 +2,7 @@
 
 vector<ii> g[nax];
 ll dist[nax];
+int pa[nax];
 bool bellman_ford(int s, int n){
   forn(i, n) dist[i] = inf;
   dist[s] = 0;
@@ -9,13 +10,15 @@ bool bellman_ford(int s, int n){
     forn(u, n){
       if(dist[u] == inf) continue; // Unreachable
       for(auto& [v, w] : g[u])
-        if(dist[u] + w < dist[v]) dist[v] = dist[u] + w, pa[v] = u;
+        if(dist[u] + w < dist[v]) 
+          dist[v] = dist[u] + w, pa[v] = u;
     }
   }
   int start = -1;
   forn(u, n){
     if(dist[u] == inf) continue;  // Unreachable
-    for(auto& [v, w] : g[u]) if(dist[u] + w < dist[v]) start = v;
+    for(auto& [v, w] : g[u]) 
+      if(dist[u] + w < dist[v]) start = v;
   }
   if(start == -1) return 0;
   else{  // Si se necesita reconstruir
@@ -23,7 +26,7 @@ bool bellman_ford(int s, int n){
     vi cycle{start}; 
     int v = start;  
     while(pa[v] != start) v = pa[v], cycle.pb(v);
-    cycle.pb(start); // solo si se necesita que vuelva al start
+    cycle.pb(start);// solo si se necesita volver al start
     reverse(all(cycle));
     return 1;
   }

@@ -6,7 +6,8 @@ int dfs(int u, int dep = -1, bool flag = 0, int dis = 0, int p = -1) {
   cnt[u] = 1;
   if(flag) dist[dep][u] = dis;
   for (int v : g[u])
-    if (!depth[v] && v != p) cnt[u] += dfs(v, dep, flag, dis + 1, u);
+    if (!depth[v] && v != p) 
+      cnt[u] += dfs(v, dep, flag, dis + 1, u);
   return cnt[u];
 }
 int get_centroid (int u, int r, int p = -1) {

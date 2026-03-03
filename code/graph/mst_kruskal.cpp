@@ -3,7 +3,7 @@
 struct edge{
   int u, v, w;
   edge(int u, int v, int w): u(u), v(v), w(w){}
-  bool operator < (const edge &o) const{ return w < o.w;}
+  bool operator<(const edge &o)const{ return w < o.w; }
 };
 vector<edge> g;
 void kruskal(int n){

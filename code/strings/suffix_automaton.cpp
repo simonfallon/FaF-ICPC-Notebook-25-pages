@@ -22,7 +22,8 @@ struct suf_aut{
   void extend(char c) {
     int v = sz++, p = last;
     st[v].len = st[p].len + 1;
-    while(p != -1 && !st[p].to[c]) st[p].to[c] = v, p = st[p].link;
+    while(p != -1 && !st[p].to[c]) 
+      st[p].to[c] = v,  p = st[p].link;
     if(p == -1) st[v].link = 0;
     else{
       int q = st[p].to[c];
@@ -32,7 +33,8 @@ struct suf_aut{
         st[w].len = st[p].len + 1;
         st[w].to = st[q].to;
         st[w].link = st[q].link;
-        while(p != -1 && st[p].to[c] == q) st[p].to[c] = w, p = st[p].link;
+        while(p != -1 && st[p].to[c] == q) 
+          st[p].to[c] = w,  p = st[p].link;
         st[q].link = st[v].link = w;
       }
     }
@@ -46,14 +48,18 @@ struct suf_aut{
   }
   void calc_cnt(){
     vi ord(sz - 1);  iota(all(ord), 1);
-    sort(all(ord), [&](int i, int j){ return st[i].len > st[j].len; });
-    for(int v: ord) cnt[st[v].link] += cnt[v];  // Add cnt to link
+    sort(all(ord), [&](int i, int j){ 
+      return st[i].len > st[j].len; 
+    });
+    // Add cnt to link
+    for(int v: ord) cnt[st[v].link] += cnt[v];  
   }
   string LCS(string &t){
     int v = 0, l = 0;
     ii mx{0, -1};
     forn(i, sz(t)){
-      while(v && !st[v].to.count(t[i])) v = st[v].link, l = st[v].len;
+      while(v && !st[v].to.count(t[i]))
+        v = st[v].link, l = st[v].len;
       if(st[v].to.count(t[i])) v = st[v].to[t[i]], ++l;
       mx = max(mx, {l, i}); // LCS ending at position i
     }
@@ -63,11 +69,14 @@ struct suf_aut{
     int n = sz(t), v = 0, l = 0, ans = 0;
     t += t;
     forn(i, sz(t)){
-      while(v && !st[v].to.count(t[i])) v = st[v].link, l = st[v].len;
+      while(v && !st[v].to.count(t[i])) 
+        v = st[v].link, l = st[v].len;
       if(st[v].to.count(t[i])) v = st[v].to[t[i]], ++l;
       if(i >= n){
-        if(v && st[st[v].link].len >= n) v = st[v].link, l = st[v].len;
-        if(!seen[v] && l >= n) seen[v] = 1, ans += cnt[v]; // Match
+        if(v && st[st[v].link].len >= n) 
+          v = st[v].link,  l = st[v].len;
+        if(!seen[v] && l >= n) 
+          seen[v] = 1,  ans += cnt[v]; // Match
       }
     }
     return ans;

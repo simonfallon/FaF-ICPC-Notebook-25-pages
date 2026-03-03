@@ -6,3 +6,5 @@ int binpow(int b, int e) {
     if (e&1) ans = 1LL*ans*b%mod;
   return ans;
 }
+
+int inv(int a) { return binpow(a, mod-2); }

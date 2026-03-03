@@ -2,19 +2,21 @@
 
 /// Complexity: O(|E||V|^2)
 /// Tested: https://tinyurl.com/oe5rnpk
-/// Max matching undirected graph
+/// Max mating undirected graph
+const int MAXE = 1000000; // 2*n*n
 struct network {
   struct struct_edge { int v; struct_edge * n; };
   typedef struct_edge* edge;
   int n;
-  struct_edge pool[MAXE]; ///2*n*n;
+  struct_edge pool[MAXE];
   edge top;
   vector<edge> adj;
   queue<int> q;
-  vector<int> f, base, inq, inb, inp, match;
+  vector<int> f, base, inq, inb, inp, mat;
   vector<vector<int>> ed;
-  network(int n) : n(n), match(n, -1), adj(n), top(pool), f(n), base(n),
-                   inq(n), inb(n), inp(n), ed(n, vector<int>(n)) {}
+  network(int n) 
+    : n(n), mat(n, -1), adj(n), top(pool), f(n), 
+    base(n), inq(n), inb(n), inp(n), ed(n, vi(n)) {}
   void add_edge(int u, int v) {
     if(ed[u][v]) return;
     ed[u][v] = 1;
@@ -26,16 +28,16 @@ struct network {
     while(1) {
       inp[u = base[u]] = 1;
       if(u == root) break;
-      u = f[ match[u] ];
+      u = f[ mat[u] ];
     }
     while(1) {
       if(inp[v = base[v]]) return v;
-      else v = f[ match[v] ];
+      else v = f[ mat[v] ];
     }
   }
   void mark(int lca, int u) {
     while(base[u] != lca) {
-      int v = match[u];
+      int v = mat[u];
       inb[ base[u ]] = 1;
       inb[ base[v] ] = 1;
       u = f[v];
@@ -65,19 +67,19 @@ struct network {
     q = queue<int>();
     q.push(s);
     inq[s] = 1;
-   while(sz(q)) {
+    while(sz(q)) {
       int u = q.front(); q.pop();
       for(edge e = adj[u]; e; e = e->n) {
         int v = e->v;
-        if(base[u] != base[v] && match[u] != v) {
-          if((v == s) || (match[v] != -1 && f[match[v]] != -1))
+        if(base[u] != base[v] && mat[u] != v) {
+          if((v==s)|| (mat[v] != -1 && f[mat[v]] != -1))
             blossom_contraction(s, u, v);
           else if(f[v] == -1) {
             f[v] = u;
-            if(match[v] == -1) return v;
-            else if(!inq[match[v]]) {
-              inq[match[v]] = 1;
-              q.push(match[v]);
+            if(mat[v] == -1) return v;
+            else if(!inq[mat[v]]) {
+              inq[mat[v]] = 1;
+              q.push(mat[v]);
             }
           }
         }
@@ -88,15 +90,14 @@ struct network {
   int doit(int u) {
     if(u == -1) return 0;
     int v = f[u];
-    doit(match[v]);
-    match[v] = u; match[u] = v;
+    doit(mat[v]);
+    mat[v] = u; mat[u] = v;
     return u != -1;
   }
-  /// (i < net.match[i]) => means match
+  /// (i < net.mat[i]) => means match
   int maximum_matching() {
     int ans = 0;
-    forn(u,n)
-      ans += (match[u] == -1) && doit(bfs(u));
+    forn(u,n) ans += (mat[u] == -1) && doit(bfs(u));
     return ans;
   }
 };

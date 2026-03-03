@@ -1,19 +1,11 @@
 #include "../template.h"
 
-struct pt{
-  ld x, y;
-  pt(){}
-  pt(ld x, ld y): x(x), y(y){}
-  pt operator+(pt p){ return pt(x+p.x, y+p.y); }
-  pt operator-(pt p){ return pt(x-p.x, y-p.y); }
-  ld operator*(pt p){ return x*p.x + y*p.y; }
-  ld norm2(){ return *this * *this; }
-  bool operator<(pt p)const{ // for sort, convex hull/set/map
-    return x < p.x - eps || (abs(x - p.x) <= eps && y < p.y - eps); }
-};
+#include "point.cpp"
+
 inline bool onx(pt a, pt b){ return a.x < b.x; }
 inline bool ony(pt a, pt b){ return a.y < b.y; }
-// Given a set of N points, answer queries of nearest point in O(log(N))
+// Given a set of N points
+// answer queries of nearest point in O(log(N))
 struct Node {
   pt pp;
   ll x0 = inf, x1 = -inf, y0 = inf, y1 = -inf;
@@ -38,9 +30,10 @@ struct Node {
 };
 struct KDTree {
   Node* root;
-  KDTree(const vector<pt>& vp):root(new Node({all(vp)})) {}
+  KDTree(const vector<pt>& vp)
+    : root(new Node({all(vp)})) {}
   pair<ll, pt> search(pt p, Node *node){
-    if(!node->fir){ // To avoid query point as answer: 
+    if(!node->fir){ // To avoid query point as answer:
       // ADD:  if(p == node -> pp) return {INF, pt()};
       return {(p - node->pp).norm2(), node->pp};
     }

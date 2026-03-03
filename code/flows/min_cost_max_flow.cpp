@@ -3,7 +3,8 @@
 const ll inf = 1e18;
 struct edge{
   int to, rev; ll cap, cos, f{0};
-  edge(int to, int rev, ll cap, ll cos):to(to), rev(rev), cap(cap), cos(cos){}
+  edge(int to, int rev, ll cap, ll cos)
+    : to(to), rev(rev), cap(cap), cos(cos){}
 };
 struct MCMF{
   int n, s, t; 
@@ -38,13 +39,16 @@ struct MCMF{
       ll f = K - flow;    
       int cur = t; // Find flow
       while(cur != s){  
-        int u = g[cur][p[cur]].to, rev = g[cur][p[cur]].rev;
+        int u = g[cur][p[cur]].to,
+          rev = g[cur][p[cur]].rev;
         f = min(f, g[u][rev].cap - g[u][rev].f);
         cur = u;
       }
-      flow += f,  cost += f * dis[t],  cur = t;     // Apply flow
+      // Apply flow
+      flow += f,  cost += f * dis[t],  cur = t;
       while(cur != s){
-        int u = g[cur][p[cur]].to, rev = g[cur][p[cur]].rev;
+        int u = g[cur][p[cur]].to,
+          rev = g[cur][p[cur]].rev;
         g[u][rev].f += f,  g[cur][p[cur]].f -= f;
         cur = u;
       }

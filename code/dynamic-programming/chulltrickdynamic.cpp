@@ -26,7 +26,9 @@ struct CHT : public multiset<line> {
     }
     auto x = pre(y);
     if(z == end()) return y->m == x->m && y->b == x->b;
-    return ld(x->b - y->b)*(z->m - y->m) >= ld(y->b - z->b)*(y->m - x->m);
+    ld v1 = ld(x->b - y->b) * (z->m - y->m), 
+       v2 = ld(y->b - z->b) * (y->m - x->m);
+    return v1 >= v2;
   }
   void add(T m, T b) {
     auto y = insert(line{m, b});

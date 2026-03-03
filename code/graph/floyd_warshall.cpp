@@ -1,13 +1,13 @@
 #include "../template.h"
 
 // Complejidad O(n^3)
-int dist[nax][nax];
+int d[nax][nax], n; // distance, # of vertices
 void floyd(){
   // Hay que saber inicializar el array d.
   forn(k,n){
     forn(u,n){
       forn(v,n){
-        dist[u][v] = min(dist[u][v], dist[u][k] + dist[k][v]);
+        d[u][v] = min(d[u][v], d[u][k] + d[k][v]);
       }
     }
   }

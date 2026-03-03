@@ -13,7 +13,10 @@ void sieve(){
     if (lp[i] == 0) {
       lp[i] = i; pr.pb(i);
     }
-    for (int j=0, mult= i*pr[j]; j<sz(pr) && pr[j]<=lp[i] && mult<nax; ++j, mult= i*pr[j])
+    for (int j=0, mult = i*pr[j]; 
+        j < sz(pr) && pr[j] <= lp[i] && mult < nax;
+        ++j, mult= i*pr[j]){    
       lp[mult] = pr[j];
+    }
   }
 }

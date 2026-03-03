@@ -1,6 +1,5 @@
 #include "../template.h"
 
-#include "../c++/template.cpp"
 vi X, Y;
 ld Z; 
 int n, m;
@@ -21,7 +20,8 @@ void pivot(int x, int y){
   c[y] = -c[y] * a[x][y];
 }
 
-pair<ld, vd> simplex(){  // maximizar Z = c * x dado ax <= b, x_i >= 0
+// maximizar Z = c * x dado ax <= b, x_i >= 0
+pair<ld, vd> simplex(){  
   X.resize(m),  iota(all(X), 0);
   Y.resize(n),  iota(all(Y), m);
   while(1){
@@ -35,7 +35,8 @@ pair<ld, vd> simplex(){  // maximizar Z = c * x dado ax <= b, x_i >= 0
     int x = -1, y = max_element(all(c)) - c.begin();
     if(c[y] < eps) break; 
     ld mn = inf;
-    forn(i, n) if(a[i][y] > eps && b[i] / a[i][y] < mn) mn = b[i] / a[i][y], x = i;
+    forn(i, n) if(a[i][y] > eps && b[i] / a[i][y] < mn) 
+      mn = b[i] / a[i][y], x = i;
     if(x == -1) return {inf, {}};   // c^T x is unbounded
     pivot(x, y);
   }

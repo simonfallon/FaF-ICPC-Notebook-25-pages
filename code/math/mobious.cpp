@@ -1,6 +1,7 @@
 #include "../template.h"
 
-int mu[nax], f[nax], h[nax];
+int mu[nax], f[nax], h[nax], lp[nax];
+vi pr;
 void pre(){
   mu[0] = 0; mu[1] = 1;
   for(int i = 1; i<nax; ++i){
@@ -19,14 +20,16 @@ void pre(){
 ////////
 void pre(){
   mu[0] = 0; mu[1] = 1;
-  fore(i,2,N){
+  fore(i,2,nax){
     if (lp[i] == 0) {
       lp[i] = i; mu[i] = -1;
       pr.pb(i);
     }
-    for (int j=0, mult= i*pr[j]; j<sz(pr) && pr[j]<=lp[i] && mult<=N; ++j, mult= i*pr[j]){
-      if(i%pr[j]==0) mu[mult] = 0;
-      else mu[mult] = mu[i]*mu[pr[j]];
+    for (int j = 0, mult = i*pr[j];
+        j < sz(pr) && pr[j] <= lp[i] && mult <= nax;
+        ++j, mult = i*pr[j]){
+      if(i % pr[j] == 0) mu[mult] = 0;
+      else mu[mult] = mu[i] * mu[pr[j]];
       lp[mult] = pr[j];
     }
   }
