@@ -130,5 +130,5 @@ if __name__ == "__main__":
             os.remove(file)
     # Clean up temp files
     for file in os.listdir('.'):
-        if file.startswith('temp_') and file.endswith(('.cpp', '.py', '.java', '.txt', '.h', '.c', '.cc')):
+        if file.startswith('temp_') and file.endswith(('.cpp', '.py', '.java', '.txt', '.h', '.c', '.cc', '.sh')):
             os.remove(file)

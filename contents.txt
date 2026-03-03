@@ -9,6 +9,8 @@ c++/bits.cpp	Bits Manipulation
 c++/random.cpp	Random
 c++/custom_hash.cpp	Custom Hash
 c++/other.cpp	Other
+c++/run.sh	Run
+c++/stress.sh	Stress
 
 [Strings]
 strings/z_algorithm.cpp	Z's Algorithm
@@ -40,6 +42,8 @@ graph/2satkosarajuytarjan.cpp	2 SAT Kosaraju y Tarjan
 graph/centroid_decomposition.cpp	Centroid Decomposition
 graph/tree_binarization.cpp	Tree Binarization
 graph/eulerian_path.cpp	Eulerian Path
+graph/arborescence.cpp	Arborescence
+graph/max_clique.cpp	Max Clique
 
 [Flows]
 flows/edmons_karp.cpp	Edmons-Karp
@@ -53,12 +57,14 @@ flows/blossom.cpp	Blossom
 
 [Data Structures]
 data-structures/unionfind.cpp	Disjoint Set Union
+data-structures/rollback_union_find.cpp	Rollback Union Find
 data-structures/sqrt_decomposition.cpp	SQRT Decomposition
 data-structures/fenwick_tree.cpp	Fenwick Tree
 data-structures/fenwick_tree2d.cpp	Fenwick Tree 2D
 data-structures/seg_treerecursivo.cpp	Segment Tree
 data-structures/seg_tree_lazy_prop.cpp	ST Lazy Propagation
-data-structures/seg_tree_persistent.cpp	Persistent ST 
+data-structures/seg_tree_persistent.cpp	Persistent ST
+data-structures/seg_tree_lazy_persistent.cpp	Persistent ST Lazy
 data-structures/seg_tree_2d_iterativo.cpp	Segtree 2D
 data-structures/seg_tree_iterativo.cpp	Segtree iterativo
 data-structures/RMQ.cpp	RMQ
