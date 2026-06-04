@@ -28,15 +28,15 @@ strings/suffix_tree.cpp	Suffix Tree
 [Graph algorithms]
 graph/articulationpointandbridge.cpp	Articulation Points and Bridges
 graph/blockcuttree.cpp	Biconnected Components
-graph/Topo_sort.cpp	Topological Sort
+graph/topo_sort.cpp	Topological Sort
 graph/kosaraju.cpp	Kosaraju: Strongly connected components
-graph/tarjanSCC.cpp	Tarjan: Strongly connected components
+graph/tarjanscc.cpp	Tarjan: Strongly connected components
 graph/mst_kruskal.cpp	MST Kruskal
 graph/mst_prim.cpp	MST Prim
-graph/Bellmanford.cpp	Bellman-Ford
+graph/bellmanford.cpp	Bellman-Ford
 graph/spfa.cpp	Shortest Path Faster Algorithm
 graph/floyd_warshall.cpp	Floyd-Warshall
-graph/LCA_binarylifting.cpp	LCA Binary Lifting
+graph/lca_binarylifting.cpp	LCA Binary Lifting
 graph/2sat.cpp	2 SAT
 graph/2satkosarajuytarjan.cpp	2 SAT Kosaraju y Tarjan
 graph/centroid_decomposition.cpp	Centroid Decomposition
