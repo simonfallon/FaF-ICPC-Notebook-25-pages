@@ -6,28 +6,13 @@
 #define pb push_back
 #define sz(x) (int32_t)(x.size())
 #define el '\n'
-#define ford(i, n) for(int i = n - 1; i >= 0; --i)
- 
-#define for1(i, n) for(int i = 1; i <= n; ++i)
-#define fore(i, l, r) for(int i = l ; i <= r; ++i)
-#define fored(i, l, r) for(int i = r ; i >= l; --i)
 #define all(a) a.begin(), a.end()
  
 using namespace std;
- 
-typedef vector<int> vi;
-typedef pair<int, int> ii;
-typedef long long ll;
-typedef long long ld;
- 
-typedef __int128_t i128;
-typedef array<ll,2> v2;
-typedef array<int, 3> v3;
-typedef array<int, 4> v4;
-typedef array<string, 2> vs2;
 
-const int inf = 2e9;
-const int mod = 998244353;
+typedef long long ld;
+typedef pair<int, int> ii;
+
 const ld eps = 0;
 
 struct pt{
@@ -63,8 +48,7 @@ struct mink_sum{
     int normal=-1, n;
   vector<pt> p;
   mink_sum(){}
-  mink_sum(vector<pt>& p1, vector<pt>& p2, bool inter=0){
-    if(inter) for(auto& [x, y] : p2) x = -x, y = -y;
+  mink_sum(vector<pt>& p1, vector<pt>& p2){
     p.reserve(sz(p1) + sz(p2));
     reorder(p1),  reorder(p2);
     forn(i, 2) p1.pb(p1[i]), p2.pb(p2[i]);
@@ -83,15 +67,6 @@ struct mink_sum{
     forn(i, sz(pol)) 
       if(ii{pol[i].y, pol[i].x} < ii{pol[j].y, pol[j].x}) j = i;
     rotate(pol.begin(), pol.begin() + j, pol.end());
-  }
-  bool has(pt q){
-    int cnt = 0;
-    forn(i, sz(p))
-      cnt += q.side(p[i], p[(i+1) % sz(p)]) >= 0;
-    return cnt == sz(p);
-  }
-  bool intersect(pt shift = pt(0, 0)){ 
-    return has(shift); 
   }
   void remove_col(){ // helper 
     vector<pt> s;
@@ -115,8 +90,7 @@ struct mink_sum{
     // returns true if point on boundary 
     // (change sign of EPS in left to return false)
     int l = 1, r = n-1; 
-    while(l+1 < r){     
-      // 
+    while(l+1 < r){
       int m = (l+r) / 2;
       if(!q.left(p[0], p[m])) l = m;
       else r = m;
@@ -127,58 +101,41 @@ struct mink_sum{
 
 
 void sol(){
-    int m1, m2, n;
-    cin >> m1;
-    vector<pt> p1(m1);
-    forn(i, m1){
-        cin >> p1[i].x >> p1[i].y;
-        p1[i] = p1[i] * 2;
-    } 
-    cin >> m2;
-    vector<pt> p2(m2);
-    forn(i, m2){
-        cin >> p2[i].x >> p2[i].y;
-        p2[i] = p2[i] * 2;
-    }
-    cin >> n;
-    vector<pt> pts(n);
-    forn(i, n){
-        cin >> pts[i].x >> pts[i].y;
-        pts[i] = pts[i] * 2;
-    }
+    auto read = [&](){
+        int n; cin >> n;
+        vector<pt> p(n);
+        forn(i, n){
+            cin >> p[i].x >> p[i].y;
+            p[i] = p[i] * 2; // Avoid double when / 2
+        }  
+        return make_pair(n, p);
+    };
+    auto [m1, p1] = read();
+    auto [m2, p2] = read();
+    auto [n, pts] = read();
 
     string ans(n, 'N');
+    // (p1 + p2) / 2git
     auto tp1 = p1, tp2 = p2;
     for(auto &p: tp1) p = p / 2;
     for(auto &p: tp2) p = p / 2;
-
     auto ms = mink_sum(tp1, tp2);
     forn(i, n) if(ms.has_log(pts[i])) ans[i] = 'Y';
 
     // p1 + 2*(p2 - p1)
     // 2*p2 - p1
-    tp1 = p1, tp2 = p2;
-    for(auto &p: tp1) p = p * (-1);
-    for(auto &p: tp2) p = p * 2;
-    ms = mink_sum(tp1, tp2);
-    forn(i, n) if(ms.has_log(pts[i])) ans[i] = 'Y';
-
-    tp1 = p2, tp2 = p1;
-    for(auto &p: tp1) p = p * (-1);
-    for(auto &p: tp2) p = p * 2;
-    ms = mink_sum(tp1, tp2);
-    forn(i, n) if(ms.has_log(pts[i])) ans[i] = 'Y';
-
+    auto diff = [&](){
+        for(auto &p: tp1) p = p * (-1);
+        for(auto &p: tp2) p = p * 2;
+        ms = mink_sum(tp1, tp2);
+        forn(i, n) if(ms.has_log(pts[i])) ans[i] = 'Y';
+    };
+    tp1 = p1, tp2 = p2, diff();
+    tp1 = p2, tp2 = p1, diff();
     cout << ans << el;
 }
 
 int main(){
-    ios_base::sync_with_stdio(false);
-    cout << setprecision(20) << fixed;
-    cin.tie(NULL);
-    int t = 1;
-    // cin >> t;
-    while(t--){
-        sol();
-    }
+    ios_base::sync_with_stdio(false); cin.tie(NULL);
+    sol();
 }
