@@ -18,12 +18,12 @@ struct mink_sum{
       j += cro <= eps;
     }
   }
-  void reorder(vector<pt> &pol){
-    if(pol[2].side(pol[0], pol[1]) < 0) reverse(all(pol));
+  void reorder(vector<pt> &q){
+    if(q[2].side(q[0], q[1]) < 0) reverse(all(q));
     int j = 0;
-    forn(i, sz(pol)) 
-      if(ii{pol[i].y, pol[i].x} < ii{pol[j].y, pol[j].x}) j = i;
-    rotate(pol.begin(), pol.begin() + j, pol.end());
+    forn(i, sz(q)) 
+      if(ii{q[i].y, q[i].x} < ii{q[j].y, q[j].x}) j = i;
+    rotate(q.begin(), q.begin() + j, q.end());
   }
   bool has(pt q){
     int cnt = 0;
