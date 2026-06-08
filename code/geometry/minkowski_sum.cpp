@@ -3,35 +3,33 @@
 #include "point.cpp"
 
 struct mink_sum{
-  vector<pt> p, q, pol;
+  vector<pt> p;
   mink_sum(){}
-  mink_sum(vector<pt>& p1, vector<pt>& p2, bool inter=1)
-    : p(p1), q(p2){
-    if(inter) for(auto& [x, y] : q) x = -x, y = -y;
-    pol.reserve(sz(p) + sz(q));
-    reorder(p),  reorder(q);
-    forn(i, 2) p.pb(p[i]), q.pb(q[i]);
+  mink_sum(vector<pt>& p1, vector<pt>& p2, bool inter=0){
+    if(inter) for(auto& [x, y] : p2) x = -x, y = -y;
+    p.reserve(sz(p1) + sz(p2));
+    reorder(p1),  reorder(p2);
+    forn(i, 2) p1.pb(p1[i]), p2.pb(p2[i]);
     int i = 0, j = 0;
-    while(i+2 < sz(p) || j+2 < sz(q)){
-      pol.pb(p[i] + q[j]);
-      auto cro = (p[i+1] - p[i]) % (q[j+1] - q[j]);
+    while(i+2 < sz(p1) || j+2 < sz(p2)){
+      p.pb(p1[i] + p2[j]);
+      auto cro = (p1[i+1] - p1[i]) % (p2[j+1] - p2[j]);
       i += cro >= -eps;
       j += cro <= eps;
     }
   }
-  void reorder(vector<pt> &p){
-    if(p[2].side(p[0], p[1]) < 0) reverse(all(p));
-    int pos = 0;
-    forn(i, sz(p)) 
-      if(ii{p[i].y, p[i].x} < ii{p[pos].y, p[pos].x})
-        pos = i;
-    rotate(p.begin(), p.begin() + pos, p.end());
+  void reorder(vector<pt> &pol){
+    if(pol[2].side(pol[0], pol[1]) < 0) reverse(all(pol));
+    int j = 0;
+    forn(i, sz(pol)) 
+      if(ii{pol[i].y, pol[i].x} < ii{pol[j].y, pol[j].x}) j = i;
+    rotate(pol.begin(), pol.begin() + j, pol.end());
   }
-  bool has(pt p){
+  bool has(pt q){
     int cnt = 0;
-    forn(i, sz(pol))
-      cnt += p.side(pol[i], pol[(i+1) % sz(pol)]) >= 0;
-    return cnt == sz(pol);
+    forn(i, sz(p))
+      cnt += q.side(p[i], p[(i+1) % sz(p)]) >= 0;
+    return cnt == sz(p);
   }
   bool intersect(pt shift = pt(0, 0)){ 
     return has(shift); 
