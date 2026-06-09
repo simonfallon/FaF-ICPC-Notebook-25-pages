@@ -25,7 +25,14 @@
     \vspace{-3mm}
 }
 
-\newcommand{\Topic}[1]{\textbf{#1}}
+\makeatletter
+\newcommand{\Topic}[1]{{\@tempdima=\f@size pt\relax
+  \fontsize{1.1\@tempdima}{0pt}\selectfont\textbf{#1}}}
+\makeatother
+
+% Separator between consecutive text-only topics: line break + extra space.
+% Tune the length to taste (text topics only; list/table topics keep their own spacing).
+\newcommand{\TopicBreak}{\\[4pt]}
 
 \lstdefinestyle{shared}{
     belowcaptionskip=1\baselineskip,

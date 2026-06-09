@@ -1,6 +1,7 @@
 \section{Theory}
 
 \Section{DP Optimization Theory}
+{\renewcommand{\arraystretch}{2}
 \begin{tabular}{|p{0.8cm}| p{4.5cm}| p{3.3cm}|p{0.9cm}| p{1.3cm}|}
 	\hline
 	Name & Original Recurrence & Sufficient Condition & From  & To  \\ 
@@ -13,39 +14,47 @@
 	\hline
 	Knuth & $dp[i][j] = min_{i<k<j} \{dp[i][k] + dp[k][j] \} + C[i][j] $ & $A[i, j -1] \leq A[i, j] \leq A[i+1, j]$ & $O(n^3)$ & $O(n^2)$ \\ 
 	\hline
-\end{tabular} 
-
-Notes:
+\end{tabular}}
 
 \begin{itemize}
 	\item $A[i][j]$ - the smallest k that gives the optimal answer, for example in $dp[i][j] = dp[i-1][k] + C[k][j]$
 	\item $C[i][j]$ - some given cost function
-	\item We can generalize a bit in the following way $dp[i] = \min_{j<i}\{F[j]+b[j] * a[i]\}$, where $F[j]$ is computed from $dp[j]$ in constant time
+	\item Generalization: $dp[i] = \min_{j<i}\{F[j]+b[j] * a[i]\}$, where $F[j]$ is computed from $dp[j]$ in const time
 \end{itemize}
-
-
 \Section{Combinatorics}
 
 \Topic{Sums}
 
-\begin{tabular}{l l}
-    $\sum_{k=0}^n k = n(n+1)/2$		& ${n \choose k} = \frac{n!}{(n-k)!k!}$  \\ \break
-    $\sum_{k=a}^b k = (a+b)(b-a+1)/2$   	& ${n \choose k} = {n-1 \choose k} + {n-1 \choose k-1}$ \\
-    $\sum_{k=0}^n k^2 = n(n+1)(2n+1)/6$	 & ${n+1 \choose k} = \frac{n+1}{n-k+1} {n \choose k}$  \\
-    $\sum_{k=0}^n k^3 = n^2(n+1)^2/4$   & ${n \choose k+1} = \frac{n-k}{k+1} {n \choose k}$     \\
-    $\sum_{k=0}^n k^4 = (6n^5 + 15n^4 + 10n^3 - n)/30$  & ${n \choose k} = \frac{n}{n-k} {n-1 \choose k}$      \\
-    $\sum_{k=0}^n k^5 = (2n^6 + 6n^5 + 5n^4 - n^2)/12$  & ${n \choose k} = \frac{n-k+1}{k} {n \choose k-1}$    \\
-    $\sum_{k=0}^n x^k = (x^{n+1} - 1)/(x - 1)$  & $12! \approx 2^{28.8}$ \\
-    $\sum_{k=0}^n kx^k = (x - (n+1)x^{n+1} + nx^{n+2})/(x-1)^2$	& $20! \approx 2^{61.1}$ \\
-    $1 + x + x^2 + \dots = 1 / (1 - x)$
-\end{tabular}
+{\renewcommand{\arraystretch}{2}
+\begin{tabular}{|l| l|}
+	\hline
+	Sums & Binomial coefficients \\
+	\hline
+    $\sum_{k=0}^n k = n(n+1)/2$ & ${n \choose k} = \frac{n!}{(n-k)!k!}$  \\
+	\hline
+    $\sum_{k=a}^b k = (a+b)(b-a+1)/2$ & ${n \choose k} = {n-1 \choose k} + {n-1 \choose k-1}$ \\
+	\hline
+    $\sum_{k=0}^n k^2 = n(n+1)(2n+1)/6$ & ${n+1 \choose k} = \frac{n+1}{n-k+1} {n \choose k}$  \\
+	\hline
+    $\sum_{k=0}^n k^3 = n^2(n+1)^2/4$ & ${n \choose k+1} = \frac{n-k}{k+1} {n \choose k}$     \\
+	\hline
+    $\sum_{k=0}^n k^4 = (6n^5 + 15n^4 + 10n^3 - n)/30$ & ${n \choose k} = \frac{n}{n-k} {n-1 \choose k}$      \\
+	\hline
+    $\sum_{k=0}^n k^5 = (2n^6 + 6n^5 + 5n^4 - n^2)/12$ & ${n \choose k} = \frac{n-k+1}{k} {n \choose k-1}$    \\
+	\hline
+    $\sum_{k=0}^n x^k = (x^{n+1} - 1)/(x - 1)$ & $12! \approx 2^{28.8}$ \\
+	\hline
+    $\sum_{k=0}^n kx^k = (x - (n+1)x^{n+1} + nx^{n+2})/(x-1)^2$ & $20! \approx 2^{61.1}$ \\
+	\hline
+    $1 + x + x^2 + \dots = 1 / (1 - x)$ & \\
+	\hline
+\end{tabular}}
 \begin{itemize}
 \item Hockey-stick identity \\
 $\sum_{i=r}^{n}\binom{i}{r} = \binom{n+1}{r+1}$
 \item Number of ways to color n-objects with r-colors if all colors must be used at least once \\
 $\sum_{k=0}^r {r \choose k}(-1)^{r-k}k^n$ o $\sum_{k=0}^r {r \choose r-k}(-1)^{k}(r-k)^n$
 \end{itemize}
-
 \Topic{Binomial coefficients}
 
 \iffalse
@@ -70,20 +79,17 @@ $\sum_{k=0}^r {r \choose k}(-1)^{r-k}k^n$ o $\sum_{k=0}^r {r \choose r-k}(-1)^{k
 \end{tabular}
 \fi
 
-Number of ways to pick a multiset of size $k$ from $n$ elements: ${n+k-1 \choose k}$ \\
-Number of $n$-tuples of non-negative integers with sum $s$:
-${{s+n-1} \choose {n-1}}$, at most $s$: ${{s + n} \choose {n}}$ \\
-Number of $n$-tuples of positive integers with sum $s$:
-${{s-1} \choose {n-1}}$ \\
-Number of lattice paths from $(0,0)$ to $(a,b)$, restricted to east and north
-steps: ${a+b \choose a}$
-
+\begin{itemize}
+    \item Number of ways to pick a multiset of size $k$ from $n$ elements: ${n+k-1 \choose k}$
+    \item Number of $n$-tuples of non-negative integers with sum $s$: ${{s+n-1} \choose {n-1}}$, at most $s$: ${{s + n} \choose {n}}$
+    \item Number of $n$-tuples of positive integers with sum $s$: ${{s-1} \choose {n-1}}$
+    \item Number of lattice paths from $(0,0)$ to $(a,b)$, restricted to east and north steps: ${a+b \choose a}$
+\end{itemize}
 \Topic{Multinomial theorem}.
 $(a_1+\dots+a_k)^n = \sum {n \choose n_1,\dots,n_k} a_1^{n_1} \dots a_k^{n_k}$,
 where $n_i \ge 0$ and $\sum n_i=n$. \\
 $${n \choose n_1,\dots,n_k} = M(n_1,\dots,n_k) = \frac{n!}{n_1! \dots n_k!}$$
 $$M(a,\dots,b,c,\dots) = M(a+\dots+b,c,\dots) M(a,\dots,b)$$
-
 \Topic{Catalan numbers}.
 \begin{itemize}
     \item $C_n = \frac{1}{n+1} \binom{2n}{n} = \frac{(2n)!}{(n+1)!n!}$ con $n \geq 0$, $C_0 = 1$ y $C_{n+1} = \frac{2(2n + 1)}{n + 2} C_{n}$
@@ -95,60 +101,51 @@ rooted ordered binary trees with $n+1$ leaves;
 triangulations of a convex $(n+2)$-gon.
 
 \end{itemize}
-%\quad GF: $\frac{1-\sqrt{1-4x}}{2x}=\sum_{n=0}^{\infty} C_n x^n$. \\
-
+%\quad GF: $\frac{1-\sqrt{1-4x}}{2x}=\sum_{n=0}^{\infty} C_n x^n$. \TopicBreak
 \Topic{Derangements}.
 Number of permutations of $n=0,1,2,\dots$ elements without fixed points is
 $1, 0, 1, 2, 9, 44, 265, 1854, 14833, \dots$
-Recurrence: $D_n = (n-1)(D_{n-1} + D_{n-2}) = n D_{n-1} + (-1)^n$.
-Corollary: number of permutations with exactly $k$ fixed points is ${n \choose k} D_{n-k}$.
-
+Recurrence: $D_n = (n-1)(D_{n-1} + D_{n-2}) = n D_{n-1} + (-1)^n$. \\
+\textbf{Corollary}: number of permutations with exactly $k$ fixed points is ${n \choose k} D_{n-k}$. \TopicBreak
 \Topic{Stirling numbers of $1^{st}$ kind}.
 $s_{n,k}$ is $(-1)^{n-k}$ times the number of permutations of $n$ elements with
 exactly $k$ permutation cycles.
 $|s_{n,k}| = |s_{n-1,k-1}| + (n-1) |s_{n-1,k}|$. \quad
-$\sum_{k=0}^n s_{n,k}\,x^k = x^{\underline n}$
-
+$\sum_{k=0}^n s_{n,k}\,x^k = x^{\underline n}$ \\
 % Number of permutations of $n$ elements with exactly $k$ cycles,
 % all of length $\ge r$: \\
 % $d_r(n,k) = (n-1) d_r(n-1,k) + (n-1)^{\underline {r-1}}\ d_r(n-r,k-1),
 % \quad d_r(n,k)=0 $ for $ n\le kr-1, \quad d_r(n,1)=(n-1)!$.
-
 \Topic{Stirling numbers of $2^{nd}$ kind}.
 $S_{n,k}$ is the number of ways to partition a set of $n$ elements into
 exactly $k$ non-empty subsets.
 $S_{n,k} = S_{n-1,k-1} + k S_{n-1,k}$.
 $S_{n,1} = S_{n,n} = 1$.
-$x^n = \sum_{k=0}^n S_{n,k}\,x^{\underline k}$
-
+$x^n = \sum_{k=0}^n S_{n,k}\,x^{\underline k}$ \TopicBreak
 \Topic{Bell numbers}.
 $B_n$ is the number of partitions of $n$ elements.
 $B_0, \ldots = 1,1,2,5,15,52,203,\ldots$ \\
 $B_{n+1} = \sum_{k=0}^n {n \choose k} B_k = \sum_{k=1}^n S_{n,k}$.
-Bell triangle: $B_r=a_{r,1}=a_{r-1,r-1}$, $a_{r,c}=a_{r-1,c-1}+a_{r,c-1}$.
+\textbf{Bell triangle}: $B_r=a_{r,1}=a_{r-1,r-1}$, $a_{r,c}=a_{r-1,c-1}+a_{r,c-1}$. \\
 %Bell triangle: 1, 1 2, 2 3 5, 5 7 10 15, 15 20 27 37 52, (last) ... (left + left above).
-
 \Topic{Bernoulli numbers}.
 %GF: $\frac{x}{e^x - 1} = \sum_{n=0}^{\infty} B_n \frac{x^n}{n!}$. \quad
 $\sum_{k=0}^{m-1} k^n =
 \frac{1}{n+1} \sum_{k=0}^n {n+1 \choose k} B_k m^{n+1-k}$. \\
 $\sum_{j=0}^m {m+1 \choose j} B_j = 0$.
-\quad $B_0=1$, $B_1=-\frac{1}{2}$. $B_n=0$, for all odd $n \ne 1$.
-
+\quad $B_0=1$, $B_1=-\frac{1}{2}$. $B_n=0$, for all odd $n \ne 1$. \\
 %\Topic{Pentagonal theorem}.
 %$\prod_{k=1}^{\infty} (1-x^k) = \sum_{n=-\infty}^{\infty} (-1)^n x^{n(3n+1)/2}$.
 %$\sum_{n=0}^{\infty}p(n) x^n = \prod_{k=1}^{\infty} \left(\frac{1}{1-x^k}\right) = (\sum x^i)(\sum x^{2i})(\sum x^{3i}) \dots$ \\
 %$p(0) = 1$, $p(n) - p(n-1) - p(n-2) + p(n-5) + p(n-7) - \dots = 0$ ($+,+,-,-$ goes on; same for $s(n)$, but $s(0)\to n$.)
-
 \Topic{Eulerian numbers}.
 $E(n,k)$ is the number of permutations with exactly
 $k$ descents ($i: \pi_i < \pi_{i+1}$) /
 ascents ($\pi_i > \pi_{i+1}$) /
 excedances ($\pi_i > i$) /
 $k+1$ weak excedances ($\pi_i \ge i$). \\
-Formula: $E(n,k)=(k+1)E(n-1,k)+(n-k)E(n-1,k-1)$. \quad
-$x^n = \sum_{k=0}^{n-1} E(n,k) {x+k \choose n}$.
-
+\textbf{Formula}: $E(n,k)=(k+1)E(n-1,k)+(n-k)E(n-1,k-1)$. \quad
+$x^n = \sum_{k=0}^{n-1} E(n,k) {x+k \choose n}$. \TopicBreak
 \Topic{Burnside's lemma}.
 The number of orbits under group $G$'s action on set $X$:\\
 $|X/G| = \frac{1}{|G|} \sum_{g \in G} |X_g|$,
@@ -160,12 +157,9 @@ $\sum_{o \in X/G} w(o) = \frac{1}{|G|} \sum_{g \in G} \sum_{x \in X_g} w(x)$.
 %$\frac{1}{n}\sum_{d|n} \phi(\frac{n}{d}) k^d$. \\
 %\Topic{Number of Lyndon words} (aperiodic necklaces).
 %$\frac{1}{n}\sum_{d|n} \mu(\frac{n}{d}) k^d$.
-
 %De Bruijn sequences over alphabet of size $k$, containing all $n$-substrings.
 %Length: $n^k$. Number: ${k!}^{k^{n-1}} / k^n$.
-
 % }}}
-
 % Number Theory {{{
 \Section{Number Theory}
 
@@ -174,13 +168,11 @@ Let $d=\gcd(a,b)$. A solution exists iff $d|c$.
 If $(x_0,y_0)$ is any solution, then all solutions are given by
 $(x,y) = (x_0 + \frac{b}{d}t, y_0 - \frac{a}{d}t)$, $t \in {\mathbb Z}$.
 To find some solution $(x_0, y_0)$, use extended GCD to solve
-$ax_0 + by_0 = d = \gcd(a, b)$, and multiply its solutions by $\frac{c}{d}$.
-
-Linear diophantine equation in $n$ variables:
+$ax_0 + by_0 = d = \gcd(a, b)$, and multiply its solutions by $\frac{c}{d}$.\\
+\textbf{Linear diophantine equation in $n$ variables}:
 $a_1 x_1 + \dots + a_n x_n = c$ has solutions iff $\gcd(a_1, \dots, a_n) | c$.
 To find some solution, let $b=\gcd(a_2, \dots, a_n)$,
-solve $a_1 x_1 + by = c$, and iterate with $a_2 x_2 + \dots = y$.
-
+solve $a_1 x_1 + by = c$, and iterate with $a_2 x_2 + \dots = y$. \TopicBreak
 \Topic{Extended GCD}
 \begin{verbatim}
 // Finds g = gcd(a,b) and x, y such that ax+by=g.
@@ -189,54 +181,45 @@ void gcdext(int &g, int &x, int &y, int a, int b)
 { if (b == 0) { g = a; x = 1; y = 0; }
   else        { gcdext(g, y, x, b, a % b); y = y - (a / b) * x; } }
 \end{verbatim}
-
-Multiplicative inverse of $a$ modulo $m$:
-$x$ in $ax + my = 1$, or $a^{\phi(m)-1} \pmod{m}$.
-
+\Topic{Multiplicative inverse of $a$ modulo $m$}:
+$x$ in $ax + my = 1$, or $a^{\phi(m)-1} \pmod{m}$. \TopicBreak
 \Topic{Chinese Remainder Theorem}.
 System $x \equiv a_i \pmod{m_i}$ for $i=1,\dots,n$, with
 pairwise relatively-prime $m_i$ has a unique solution modulo $M = m_1 m_2 \dots m_n$:
 $x = a_1 b_1 \frac{M}{m_1} + \dots + a_n b_n \frac{M}{m_n} \pmod{M}$,
-where $b_i$ is modular inverse of $\frac{M}{m_i}$ modulo $m_i$.
+where $b_i$ is modular inverse of $\frac{M}{m_i}$ modulo $m_i$. \\
 
 %\Topic{Generalized CRT}.
 System $x \equiv a \pmod{m}$, $x \equiv b \pmod{n}$ has solutions
 iff $a \equiv b \pmod{g}$, where $g=\gcd(m,n)$.
 The solution is unique modulo $L=\frac{mn}{g}$, and equals:
 $x \equiv a + T(b-a) m/g \equiv b + S(a-b) n/g \pmod{L}$,
-where $S$ and $T$ are integer solutions of $mT + nS = \gcd(m,n)$.
-
+where $S$ and $T$ are integer solutions of $mT + nS = \gcd(m,n)$. \TopicBreak
 \Topic{Prime-counting function}. $\pi(n) = |\{p \le n : p \hbox{ is prime}\}|$.
 $n/\ln(n) < \pi(n) < 1.3 n/\ln(n)$.
 $\pi(1000) = 168$, $\pi(10^6) = 78498$, $\pi(10^9) = 50\ 847\ 534$.
-\quad $n$-th prime $\approx n \ln n$.
-
+\quad $n$-th prime $\approx n \ln n$. \TopicBreak
 \Topic{Miller-Rabin's primality test}.
 Given $n = 2^r s + 1$ with odd $s$, and a random integer $1 < a < n$. \\
 If $a^s \equiv 1 {\pmod n}$ or $a^{2^j s} \equiv -1 {\pmod n}$ for some
 $0 \le j \le r-1$, then $n$ is a probable prime.
 With bases 2, 7 and 61, the test indentifies all composites below $2^{32}$.
-Probability of failure for a random $a$ is at most 1/4.
-
+Probability of failure for a random $a$ is at most 1/4. \TopicBreak
 \Topic{Pollard-$\rho$}.
 Choose random $x_1$, and let $x_{i+1} = x_i^2 - 1 \pmod{n}$.
 Test $\gcd(n, x_{2^k+i} - x_{2^k})$ as possible $n$'s factors for $k=0,1,\ldots$
 Expected time to find a factor: $O(\sqrt{m})$, where $m$ is smallest
 prime power in $n$'s factorization.
-That's $O(n^{1/4})$ if you check $n = p^k$ as a special case before factorization.
-
+That's $O(n^{1/4})$ if you check $n = p^k$ as a special case before factorization. \TopicBreak
 \Topic{Fermat primes}.  A Fermat prime is a prime of form $2^{2^n}+1$.
 The only known Fermat primes are 3, 5, 17, 257, 65537.
-A number of form $2^n+1$ is prime only if it is a Fermat prime.
-
-
+A number of form $2^n+1$ is prime only if it is a Fermat prime. \TopicBreak
 \Topic{Fermat's Theorem}. Let $m$ be a prime and $x$ and $m$ coprimes, then:
 \begin{itemize}
 \item $x^{m-1} \equiv 1 \mod m $
 \item $x^{k} \mod m = x^{k \mod (m-1)} \mod m$
 \item $x^{\phi(m)} \equiv 1 \mod m $
 \end{itemize}
-
 %\Topic{Mersenne primes}.  A Mersenne prime is a prime of form $2^n-1$.
 %Known Mersenne primes correspond to (necessarily prime) indexes
 %2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127, 521, 607, 1279,
@@ -244,27 +227,22 @@ A number of form $2^n+1$ is prime only if it is a Fermat prime.
 %21701, 23209, 44497, 86243, 110503, 132049, 216091,
 %756839, 859433, 1257787, 1398269, 2976221, 3021377,
 %6972593, 13466917.
-
 \Topic{Perfect numbers}.  $n>1$ is called perfect if it equals
 sum of its proper divisors and $1$.  Even $n$ is perfect iff $n = 2^{p-1} (2^p - 1)$
-and $2^p - 1$ is prime (Mersenne's). No odd perfect numbers are yet found.
-
+and $2^p - 1$ is prime (Mersenne's). No odd perfect numbers are yet found. \TopicBreak
 \Topic{Carmichael numbers}.
 A positive composite $n$ is a Carmichael number
 ($a^{n-1} \equiv 1 \pmod{n}$ for all $a$: $\gcd(a,n)=1$),
-iff $n$ is square-free, and for all prime divisors $p$ of $n$, $p-1$ divides $n-1$.
-
+iff $n$ is square-free, and for all prime divisors $p$ of $n$, $p-1$ divides $n-1$. \TopicBreak
 \Topic{Number/sum of divisors}.
 $\tau(p_1^{a_1} \dots p_k^{a_k}) = \prod_{j=1}^k (a_j+1)$. \quad
-$\sigma(p_1^{a_1} \dots p_k^{a_k}) = \prod_{j=1}^k \frac{p_j^{a_j+1}-1}{p_j-1}$.
-
+$\sigma(p_1^{a_1} \dots p_k^{a_k}) = \prod_{j=1}^k \frac{p_j^{a_j+1}-1}{p_j-1}$. \TopicBreak
 \Topic{Product of divisors}.
 $\mu(n) = n^{\frac{\tau(n)}{2}}$
 \begin{itemize}
 \item if $p$ is a prime, then: $\mu(p^k) = p^{\frac{k(k+1)}{2}}$
 \item if $a$ and $b$ are coprimes, then: $\mu(ab) = \mu(a)^{\tau(b)}\mu(b)^{\tau(a)}$
 \end{itemize}
-
 \Topic{Euler's phi function}.  $\phi(n)=|\{m \in {\mathbb N}, m \le n, \gcd(m, n) = 1 \}|$.
   
 \begin{itemize}
@@ -273,14 +251,11 @@ $\mu(n) = n^{\frac{\tau(n)}{2}}$
 \item	$\phi(p^a) = p^a(1 - \frac{1}{p}) = p^{a-1} (p-1)$
 \item	$\phi(n) = n(1 - \frac{1}{p_1})(1 - \frac{1}{p_2})...(1 - \frac{1}{p_k})$ donde $p_i$ es primo y divide a $n$
 \end{itemize}
-
-
 %\Topic{Fermat's theorem}.  $a^p \equiv a \pmod{p}$ if $p$ is prime. \\
 %For any polynomial $f(x)$ with integer coefficients and prime $p$,
 %$f(x)^{p^n} \equiv f(x^{p^n}) \pmod{p}$
-\Topic{Euler's theorem}. $a^{\phi(n)} \equiv 1\pmod{n}$, if $\gcd(a,n)=1$. \\
-\Topic{Wilson's theorem}. $p$ is prime iff $(p - 1)! \equiv -1 \pmod p$.
-
+\Topic{Euler's theorem}. $a^{\phi(n)} \equiv 1\pmod{n}$, if $\gcd(a,n)=1$. \TopicBreak
+\Topic{Wilson's theorem}. $p$ is prime iff $(p - 1)! \equiv -1 \pmod p$. \TopicBreak
 \Topic{Mobius function}.
 $\mu(1) = 1$. $\mu(n) = 0$, if $n$ is not squarefree.
 $\mu(n) = (-1)^s$, if $n$ is the product of $s$ distinct primes.
@@ -292,9 +267,7 @@ $\phi(n) = \sum_{d|n} \mu(d) \frac{n}{d}$.
 If $f$ is multiplicative, then $\sum_{d|n} \mu(d) f(d) = \prod_{p|n}(1-f(p))$,
 $\sum_{d|n} \mu(d)^2 f(d) = \prod_{p|n} (1+f(p))$. \\
 $\sum_{d|n} \mu(d) = e(n) = [n==1]$. \\
-$S_{f}(n) = \prod_{p = 1} (1+f(p_i) + f(p_i^2 ) +... + f(p_i^{e_i})) $, p - primes(n). 
-
-
+$S_{f}(n) = \prod_{p = 1} (1+f(p_i) + f(p_i^2 ) +... + f(p_i^{e_i})) $, p - primes(n). \TopicBreak
 \Topic{Legendre symbol}. If $p$ is an odd prime, $a \in {\mathbb Z}$, then
 $\left(\frac{a}{p}\right)$ equals $0$, if $p | a$; $1$ if $a$ is a quadratic
 residue modulo $p$; and $-1$ otherwise.
@@ -305,8 +278,7 @@ $\left(\frac{a}{p}\right)=a^{\left(\frac{p-1}{2}\right)} \pmod p$. \\
 %$\left(\frac{p}{q}\right) \left(\frac{q}{p}\right) = (-1)^{\frac{p-1}{2} \cdot \frac{q-1}{2}}$
 \Topic{Jacobi symbol}.  %Generalization of Legendre's symbol to any odd modulus. \\
 If $n=p_1^{a_1} \cdots p_k^{a_k}$ is odd, then
-$\left(\frac{a}{n}\right) = \prod_{i=1}^k \left(\frac{a}{p_i}\right)^{k_i}$.
-
+$\left(\frac{a}{n}\right) = \prod_{i=1}^k \left(\frac{a}{p_i}\right)^{k_i}$. \\
 %\Topic{Kronecker symbol}.
 %Let $a$ be a positive integer, which is not a perfect square and
 %$a \equiv 0$ or $1 {\pmod 4}$. \\
@@ -315,7 +287,6 @@ $\left(\frac{a}{n}\right) = \prod_{i=1}^k \left(\frac{a}{p_i}\right)^{k_i}$.
 %$\left(\frac{a}{n}\right) = \prod_{j=1}^k p_j^{k_j}$,
 %if gcd$(a,n) \ne 1$ and $n=\prod p_i^{k_i}$.
 %$\left(\frac{a}{n}\right)$ equals Jacobi symbol otherwise.
-
 \Topic{Primitive roots}.  If the order of $g$ modulo $m$ (min $n>0$:
 $g^n \equiv 1 \pmod{m}$) is $\phi(m)$, then $g$ is called a primitive root.
 If $Z_m$ has a primitive root, then it has $\phi(\phi(m))$ distinct primitive
@@ -332,15 +303,13 @@ $x^n \equiv a \pmod{p}$ has $\gcd(n, p-1)$ solutions if
 $a^{(p-1)/\gcd(n,p-1)} \equiv 1 \pmod{p}$, and no solutions otherwise.
 (Proof sketch: let $g$ be a primitive root, and
 $g^i \equiv a \pmod{p}$, $g^u \equiv x \pmod{p}$.
-$x^n \equiv a \pmod{p}$ iff $g^{nu} \equiv g^i \pmod{p}$ iff $nu \equiv i \pmod{p}$.)
-
+$x^n \equiv a \pmod{p}$ iff $g^{nu} \equiv g^i \pmod{p}$ iff $nu \equiv i \pmod{p}$.) \TopicBreak
 \Topic{Discrete logarithm problem}.  Find $x$ from $a^x \equiv b \pmod{m}$.
 Can be solved in $O(\sqrt{m})$ time and space with a meet-in-the-middle trick.
 Let $n = \lceil \sqrt{m} \rceil$, and $x = ny - z$.
 Equation becomes $a^{ny} \equiv b a^z \pmod{m}$.  Precompute all values that
 the RHS can take for $z = 0, 1, \dots, n-1$, and brute force $y$ on the LHS,
-each time checking whether there's a corresponding value for RHS.
-
+each time checking whether there's a corresponding value for RHS. \TopicBreak
 \Topic{Pythagorean triples}.  Integer solutions of $x^2 + y^2 = z^2$
 All relatively prime triples are given by:
 $x=2mn, y=m^2-n^2, z=m^2+n^2$ where $m>n, \gcd(m,n)=1$ and $m \not\equiv n \pmod{2}$.
@@ -358,24 +327,20 @@ $a = mn$, $b = \frac{m^2 - n^2}{2}$, $c = \frac{m^2 + n^2}{2}$
 $n$ is even: ($(\frac{n^2}{4} - 1)^2 + n^2 = (\frac{n^2}{4} + 1)^2$)\\
 $n$ is odd: ($(\frac{n^2 - 1}{2})^2 + n^2 = (\frac{n^2 + 1}{2})^2$)
 \end{itemize}
-
-
 \Topic{Postage stamps/McNuggets problem}.  Let $a$, $b$ be relatively-prime integers.
 There are exactly $\frac{1}{2}(a-1)(b-1)$ numbers \emph{not} of form $ax+by$ ($x,y \ge 0$),
-and the largest is $(a-1)(b-1)-1 = ab - a - b$.
-
+and the largest is $(a-1)(b-1)-1 = ab - a - b$. \TopicBreak
 \Topic{Fermat's two-squares theorem}.  Odd prime $p$ can be represented
 as a sum of two squares iff $p \equiv 1 {\pmod 4}$.
 A product of two sums of two squares is a sum of two squares.
 Thus, $n$ is a sum of two squares iff every prime of
-form $p=4k+3$ occurs an even number of times in $n$'s factorization.
-
+form $p=4k+3$ occurs an even number of times in $n$'s factorization. \TopicBreak
 \Topic{RSA}. Let $p$ and $q$ be random distinct large primes, $n = pq$.
 Choose a small odd integer $e$, relatively prime to $\phi(n) = (p-1)(q-1)$,
 and let $d = e^{-1} \pmod{\phi(n)}$. Pairs $(e,n)$ and $(d,n)$ are
 the public and secret keys, respectively.
 Encryption is done by raising a message $M \in Z_n$ to the power $e$ or $d$,
-modulo $n$.
+mod $n$.
 
 % }}}
 
@@ -388,8 +353,7 @@ Let $B[1..n]$ be the input (last column of sorted matrix of string's rotations.)
 Get the first column, $A[1..n]$, by sorting $B$.
 For each $k$-th occurence of a character $c$ at index $i$ in $A$,
 let $next[i]$ be the index of corresponding $k$-th occurence of $c$ in $B$.
-The $r$-th fow of the matrix is $A[r]$, $A[next[r]]$, $A[next[next[r]]]$, ...
-
+The $r$-th fow of the matrix is $A[r]$, $A[next[r]]$, $A[next[next[r]]]$, ... \TopicBreak
 \Topic{Huffman's algorithm}.  Start with a forest, consisting of isolated
 vertices.  Repeatedly merge two trees with the lowest weights.
 % }}}
@@ -400,11 +364,9 @@ vertices.  Repeatedly merge two trees with the lowest weights.
 \Topic{Euler's theorem}. For any planar graph, $V - E + F = 1 + C$,
 where $V$ is the number of graph's vertices, $E$ is the number of edges,
 $F$ is the number of faces in graph's planar drawing, and $C$ is the number
-of connected components.  Corollary: $V - E + F = 2$ for a 3D polyhedron.
-
+of connected components.  Corollary: $V - E + F = 2$ for a 3D polyhedron. \\
 %\Topic{Schlafli's}. A convex polyhedron in $R^n$, which has $N_0$ vertices, $N_1$ edges,
 %$N_i$ $i$-dimensional faces, satisfies: $N_0-N_1+N_2-\dots=1-(-1)^n$.
-
 \Topic{Vertex covers and independent sets}.
 Let $M$, $C$, $I$ be a max matching, a min vertex cover, and a max independent set.
 Then $|M| \le |C| = N - |I|$, with equality for bipartite graphs.
@@ -415,46 +377,41 @@ the corresponding nodes' weights, or $1$ in the unweighted case.
 Set capacities of the original graph's edges to the infinity.
 Let $(S,T)$ be a minimum $s$-$t$ cut.
 Then a maximum(-weighted) independent set is $I = (A \cap S) \cup (B \cap T)$,
-and a minimum(-weighted) vertex cover is $C = (A \cap T) \cup (B \cap S)$.
-
+and a minimum(-weighted) vertex cover is $C = (A \cap T) \cup (B \cap S)$. \TopicBreak
 \Topic{Matrix-tree theorem}.
 Let matrix $T = [t_{ij}]$, where $t_{ij}$ is the number of multiedges
 between $i$ and $j$, for $i \ne j$, and $t_{ii} = -\mbox{deg}_i$.
 Number of spanning trees of a graph is equal to the determinant of
-a matrix obtained by deleting any $k$-th row and $k$-th column from $T$.
+a matrix obtained by deleting any $k$-th row and $k$-th column from $T$. \\
 %If $G$ is a multigraph and $e$ is an edge of $G$, then the number $\tau(G)$ of
 %spanning trees of $G$ satisfies recurrence $\tau(G) = \tau(G-e) + \tau(G/e)$,
 %when $G-e$ is the multigraph obtained by deleting $e$, and $G/e$ is
 %the contraction of $G$ by $e$ (multiple edges arising from the contraction
 %are preserved.)
-
-\Topic{Euler tours}.
-Euler tour in an undirected graph exists iff the graph is connected and each
-vertex has an even degree.  Euler tour in a directed graph exists iff in-degree
-of each vertex equals its out-degree, and underlying undirected graph is connected.
-%Open Euler path exists if it's possible to make the graph Eulerian by adding a single edge.
-Construction:
-\vspace{-5mm}
-\begin{verbatim}
-    doit(u):
-      for each edge e = (u, v) in E, do: erase e, doit(v)
-      prepend u to the list of vertices in the tour
-\end{verbatim}
-\vspace{-2mm}
-
+% \Topic{Euler tours}.
+% Euler tour in an undirected graph exists iff the graph is connected and each
+% vertex has an even degree.  Euler tour in a directed graph exists iff in-degree
+% of each vertex equals its out-degree, and underlying undirected graph is connected.
+% %Open Euler path exists if it's possible to make the graph Eulerian by adding a single edge.
+% \textbf{Construction:}
+% \vspace{-2mm}
+% \begin{verbatim}
+%     doit(u):
+%       for each edge e = (u, v) in E, do: erase e, doit(v)
+%       prepend u to the list of vertices in the tour
+% \end{verbatim}
+% \vspace{-1mm}
 \Topic{Stable marriages problem}.
 While there is a free man $m$: let $w$ be the most-preferred woman to whom he
 has not yet proposed, and propose $m$ to $w$. If $w$ is free, or is engaged to someone whom
-she prefers less than $m$, match $m$ with $w$, else deny proposal.
-
+she prefers less than $m$, match $m$ with $w$, else deny proposal. \TopicBreak
 \Topic{Stoer-Wagner's min-cut algorithm}.
 Start from a set $A$ containing an arbitrary vertex.
 While $A \ne V$, add to $A$ the most tightly connected vertex
 ($z \notin A$ such that $\sum_{x \in A} w(x, z)$ is maximized.)
 Store cut-of-the-phase (the cut between the last added vertex and rest of
 the graph), and merge the two vertices added last.  Repeat until the graph
-is contracted to a single vertex.  Minimum cut is one of the cuts-of-the-phase.
-
+is contracted to a single vertex.  Minimum cut is one of the cuts-of-the-phase. \TopicBreak
 \Topic{Tarjan's offline LCA algorithm}. (Based on DFS and union-find structure.)
 \begin{verbatim}
     DFS(x):
@@ -465,13 +422,13 @@ is contracted to a single vertex.  Minimum cut is one of the cuts-of-the-phase.
       for all queries {x, y}:
         if seen[y] then output "LCA(x, y) is ancestor[Find(y)]"
 \end{verbatim}
-
-\Topic{Strongly-connected components}. Kosaraju's algorithm. \\
-1. Let $G^T$ be a transpose $G$ (graph with reversed edges.) \\
-1. Call DFS($G^T$) to compute finishing times $f[u]$ for each vertex $u$. \\
-3. For each vertex $u$, in the order of decreasing $f[u]$, perform DFS($G$, $u$). \\
-4. Each tree in the 3rd step's DFS forest is a separate SCC.
-
+\Topic{Strongly-connected components}. Kosaraju's algorithm.
+\begin{enumerate}
+    \item Let $G^T$ be a transpose $G$ (graph with reversed edges.) \\
+    \item Call DFS($G^T$) to compute finishing times $f[u]$ for each vertex $u$. \\
+    \item For each vertex $u$, in the order of decreasing $f[u]$, perform DFS($G$, $u$). \\
+    \item Each tree in the 3rd step's DFS forest is a separate SCC.
+\end{enumerate}
 \Topic{2-SAT}. Build an implication graph with 2 vertices for each
 variable -- for the variable and its inverse; for each clause $x \lor y$
 add edges $({\overline x}, y)$ and $({\overline y}, x)$.
@@ -479,8 +436,7 @@ The formula is satisfiable iff $x$ and ${\overline x}$ are in distinct SCCs,
 for all $x$. To find a satisfiable assignment, consider the graph's SCCs
 in topological order from sinks to sources (i.e. Kosaraju's last step), assigning `true' to
 all variables of the current SCC (if it hasn't been previously
-assigned `false'), and `false' to all inverses.
-
+assigned `false'), and `false' to all inverses. \TopicBreak
 \Topic{Randomized algorithm for non-bipartite matching}.
 Let $G$ be a simple undirected graph with even $|V(G)|$.
 Build a matrix $A$, which for each edge $(u,v) \in E(G)$ has
@@ -489,16 +445,14 @@ Tutte's theorem: $G$ has a perfect matching iff $\det G$ (a multivariate
 polynomial) is identically zero.
 Testing the latter can be done by computing the determinant for
 a few random values of $x_{i,j}$'s over some field.
-(e.g. $Z_p$ for a sufficiently large prime $p$)
-
+(e.g. $Z_p$ for a sufficiently large prime $p$) \TopicBreak
 \Topic{Prufer code of a tree}.
 Label vertices with integers $1$ to $n$.
 Repeatedly remove the leaf with the smallest label, and output its only
 neighbor's label, until only one edge remains. The sequence has
 length $n-2$.  Two isomorphic trees have the same sequence, and every sequence
 of integers from $1$ and $n$ corresponds to a tree.
-Corollary: the number of labelled trees with $n$ vertices is $n^{n-2}$.  % Cayley's theorem
-
+Corollary: the number of labelled trees with $n$ vertices is $n^{n-2}$. \TopicBreak % Cayley's theorem
 \Topic{Erdos-Gallai theorem}.
 A sequence of integers $\{ d_1, d_2, \dots, d_n \}$,
 with $n-1 \ge d_1 \ge d_2 \ge \dots \ge d_n \ge 0$ is a degree sequence
@@ -516,11 +470,10 @@ for all $k=1,2,\dots,n-1$.
 For a two-player, normal-play (last to move wins) game on a graph $(V,E)$:
 $G(x) = \mbox{mex}(\{ G(y) : (x, y) \in E \})$,
 where $\mbox{mex}(S) = \min \{ n \ge 0: n \not\in S \}$.
-$x$ is losing iff $G(x) = 0$.
-
+$x$ is losing iff $G(x) = 0$. \TopicBreak
 \Topic{Sums of games}.
 
-\vspace{-4mm}
+\vspace{-2mm}
 \begin{itemize}
   \item
     \emph{Player chooses a game and makes a move in it}.
@@ -539,7 +492,6 @@ $x$ is losing iff $G(x) = 0$.
 % http://www.topcoder.com/tc?module=Static&d1=tutorials&d2=algorithmGames
 
 \vspace{-3mm}
-
 \Topic{Mis\`{e}re Nim}.
 A position with pile sizes $a_1, a_2, \dots, a_n \ge 1$,
 not all equal to $1$, is losing iff $a_1 \oplus a_2 \oplus \dots \oplus a_n = 0$
@@ -557,7 +509,7 @@ Enumerating subsets of a bitmask $m$: \\
 \verb|x=0; do { ...; x=(x+1+~m)&m; } while (x!=0);| \\
 \verb$__builtin_ctz/__builtin_clz$ returns the number of trailing/leading zero bits. \\
 \verb$__builtin_popcount(unsigned x)$ counts 1-bits (slower than table lookups). \\
-For 64-bit unsigned integer type, use the suffix `\verb$ll$', i.e. \verb$__builtin_popcountll$.
+For 64-bit unsigned integer type, use the suffix `\verb$ll$', i.e. \verb$__builtin_popcountll$. \TopicBreak
 \Topic{XOR}
 Let's say F(L,R) is XOR of subarray from L to R.\\
 Here we use the property that F(L,R)=F(1,R) XOR F(1,L-1)
@@ -569,25 +521,22 @@ Here we use the property that F(L,R)=F(1,R) XOR F(1,L-1)
 
 \Topic{Stirling's approximation}
 $z! = \Gamma(z+1) = \sqrt{2 \pi}\ z^{z+1/2}\ e^{-z}
-(1 + \frac{1}{12z} + \frac{1}{288 z^2} - \frac{139}{51840 z^3} + \dots)$
+(1 + \frac{1}{12z} + \frac{1}{288 z^2} - \frac{139}{51840 z^3} + \dots)$ \\
 %$\ln \Gamma(z) = \frac{1}{2} \ln(2 \pi) + (z - \frac{1}{2}) \ln z - z + \sum_{n=1}^{\infty} \frac{B_{2n}}{2n(2n-1)} z^{-(2n-1)}$.
 %$\sum = \frac{1}{12 z} - \frac{1}{360 z^3} + \frac{1}{1260 z^5} - \dots$
-
 \Topic{Taylor series}.
 $f(x) = f(a) + \frac{x-a}{1!} f'(a) + \frac{(x-a)^2}{2!} f^{(2)}(a) + \dots + \frac{(x-a)^n}{n!} f^{(n)}(a) + \dots$. \\
 $\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \dots$ \\
 $\ln x = 2(a+\frac{a^3}{3}+\frac{a^5}{5}+\dots)$, where $a=\frac{x-1}{x+1}$. $\ln x^2 = 2 \ln x$. \\
 $\arctan x = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \dots$,
 $\arctan x = \arctan c + \arctan \frac{x-c}{1+xc}$ (e.g c=.2) \\
-$\pi = 4 \arctan 1$, $\pi = 6 \arcsin \frac{1}{2}$
-
+$\pi = 4 \arctan 1$, $\pi = 6 \arcsin \frac{1}{2}$ \TopicBreak
 \Topic{Fibonacci Period}
 Si p es primo , $ \pi(p^k) = p^{k-1}\pi(p)$\\
 $\pi(2)=3 \textit{              }\pi(5)=20 $\\
-Si n y m son coprimos $\pi(n*m) = lcm( \pi(n),\pi(m) )$
+Si n y m son coprimos $\pi(n*m) = lcm( \pi(n),\pi(m) )$ \\
 
 % }}}
-
 \Topic{List of Primes}
 
 \begin{tabular}{l l l l l l l l l l l l}
@@ -596,8 +545,6 @@ Si n y m son coprimos $\pi(n*m) = lcm( \pi(n),\pi(m) )$
     1e7 & 19 & 79 & 103 & 121 & 139 & 141 & 169 & 189 & 223 & 229 \\
     1e8 & 7 & 39 & 49 & 73 & 81 & 123 & 127 & 183 & 213 \\
 \end{tabular}
-
-
 \Topic{2-SAT} Rules \\
 $ p \rightarrow q \equiv \lnot p \lor q$ \\
 $ p \rightarrow q \equiv \lnot q \rightarrow \lnot p$ \\
@@ -608,9 +555,7 @@ $ (p \rightarrow q) \land (p \rightarrow r) \equiv p \rightarrow (q \land r)$ \\
 $ (p \rightarrow q) \lor (p \rightarrow r) \equiv p \rightarrow (q \lor r)$ \\
 $ (p \rightarrow r) \land (q \rightarrow r) \equiv (p \land q) \rightarrow r$ \\
 $ (p \rightarrow r) \lor (q \rightarrow r) \equiv (p \lor q) \rightarrow r$ \\
-$(p \land q) \lor (r \land s) \equiv (p \lor r) \land (p \lor s) \land (q \lor r) \land (q \lor s)$ \\
-
-
+$(p \land q) \lor (r \land s) \equiv (p \lor r) \land (p \lor s) \land (q \lor r) \land (q \lor s)$ \TopicBreak
 \Topic{Summations}
 \begin{itemize}
 \item	$\sum_{i=1}^{n} i^2 = \frac{n(n+1)(2n+1)}{6}$
@@ -619,19 +564,16 @@ $(p \land q) \lor (r \land s) \equiv (p \lor r) \land (p \lor s) \land (q \lor r
 \item	$\sum_{i=1}^{n} i^5 = \frac{(n(n+1))^2(2n^2+2n-1)}{12}$
 \item	$\sum_{i=0}^{n} x^i = \frac{x^{n+1}-1}{x-1}$ para $x \neq 1$	
 \end{itemize}
-
 \Topic{Compound Interest}
 \begin{itemize}
 \item $N$ is the initial population, it grows at a rate of $R$. So, after $X$ years the popularion will be $N \times (1 + R) ^ X$
 \end{itemize}
-
 \Topic{Great circle distance or geographical distance}
 \begin{itemize}
 \item $d$ = great distance, $\phi$ = latitude, $\lambda$ = longitude, $\Delta$ = difference (all the values in radians)
 \item $\sigma$ = central angle, angle form for the two vector
 \item $d = r * \sigma$, $\sigma = 2 * \arcsin(\sqrt{\sin^2(\frac{\Delta\phi}{2}) + \cos(\phi_1)\cos(\phi_2)\sin^2(\frac{\Delta\lambda}{2})})$
 \end{itemize}
-
 \Topic{Theorems}
 \begin{itemize}
 \item There is always a prime between numbers $n^2$ and $(n+1)^2$, where $n$ is any positive integer
@@ -648,22 +590,18 @@ $(p \land q) \lor (r \land s) \equiv (p \lor r) \land (p \lor s) \land (q \lor r
 \item thus, for all $a, n$ and $d$ (with $d \geq \log_2(n)$) \\
       $a^{d} \equiv a^{\phi(n) + d \mod \phi(n)} \mod n$
 \end{itemize}
-
-
 \Topic{Law of sines and cosines}
 \begin{itemize}
 \item $a, b, c$: lenghts, $A, B, C$: opposite angles, $d$: circumcircle
 \item $\frac{a}{sin(A)} = \frac{b}{sin(B)} = \frac{c}{sin(C)} = d$
 \item $c^2 = a^2 + b^2 - 2ab\cos(C)$
 \end{itemize}
-
 \Topic{Heron's Formula}
 \begin{itemize}
 \item $s = \frac{a+b+c}{2}$
 \item $Area = \sqrt{s(s-a)(s-b)(s-c)}$
 \item $a, b, c$ there are the lenghts of the sides
 \end{itemize}
-
 \Topic{Legendre's Formula} Largest power of $k$, $x$, such that $n!$ is divisible by $k^x$
 \begin{itemize}
 \item If k is prime, $x = \frac{n}{k} + \frac{n}{k^2} +\frac{n}{k^3}+ \dots $
@@ -673,13 +611,11 @@ $(p \land q) \lor (r \land s) \equiv (p \lor r) \land (p \lor s) \land (q \lor r
 \item Number of divisors of $n!$ The answer is $\prod_{j=1}^m (e_j +1)$
 \item Sum of divisors of $n!$ The answer is  $\prod_{j=1}^m \frac{p_j^{e_j+1}-1}{e_j-1}$  \\
 \end{itemize}
-
 \Topic{Max Flow with Demands} Max Flow with Lower bounds of flow for each edge
 \begin{itemize}
 \item feasible flow in a network with both upper and lower capacity constraints, no source or sink: capacities are changed to upper bound — lower bound. Add a new source and a sink. let M[v] = (sum of lower bounds of ingoing edges to v) — (sum of lower bounds of outgoing edges from v). For all v, if M[v]>0 then add edge (S,v) with capacity M, otherwise add (v,T) with capacity -M. If all outgoing edges from S are full, then a feasible flow exists, it is the flow plus the original lower bounds.
 maximum flow in a network with both upper and lower capacity constraints, with source s and sink t: add edge (t,s) with capacity infinity. Binary search for the lower bound, check whether a feasible exists for a network WITHOUT source or sink (B).
 \end{itemize}
-
 \Topic{Pick's Theorem}
 \begin{itemize}
   \item $A = i+\frac{b}{2}-1$
