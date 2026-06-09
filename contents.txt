@@ -119,6 +119,7 @@ dynamic-programming/chulltrickdynamic.cpp	CH Trick Dynamic
 [Geometry]
 geometry/point.cpp	Point
 geometry/line.cpp	Line
+geometry/segment.cpp	Segment
 geometry/convex_hull.cpp	Convex Hull
 geometry/polygon.cpp	Polygon
 geometry/circle.cpp	Circle
